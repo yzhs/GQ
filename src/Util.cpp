@@ -177,7 +177,7 @@ namespace gq
 		if (str.size() > 0)
 		{
 			ssize_t ei = str.size() - 1;
-			for (ei = str.size() - 1; ei > 0; --ei)
+			for (; ei > 0; --ei)
 			{
 				#ifdef _MSC_VER
 				if (std::isspace(str[0], loc))
