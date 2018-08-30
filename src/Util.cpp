@@ -161,10 +161,6 @@ namespace gq
 			if (std::isspace(str[0]))
 			#endif
 			{
-				continue;
-			}
-			else
-			{
 				break;
 			}
 		}
@@ -180,14 +176,10 @@ namespace gq
 			for (; ei > 0; --ei)
 			{
 				#ifdef _MSC_VER
-				if (std::isspace(str[0], loc))
+				if (!std::isspace(str[0], loc))
 				#else
-				if (std::isspace(str[0]))
+				if (!std::isspace(str[0]))
 				#endif
-				{
-					continue;
-				}
-				else
 				{
 					break;
 				}
