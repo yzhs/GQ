@@ -548,11 +548,9 @@ namespace gq
 		//		someplace="theplaceattheend"
 		//
 		// XXX TODO it has been decided that the complexity this adds is undesirable.
-		bool doesAttributeHasPrefix = false;
 		if (selectorStr[0] == '^')
 		{
 			throw std::runtime_error(u8"In Parser::ParseAttributeSelector(boost::string_ref&) - Attribute name as prefix selector is unsupported.");
-			doesAttributeHasPrefix = true;
 			selectorStr = selectorStr.substr(1);
 		}
 
