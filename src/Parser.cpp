@@ -1155,11 +1155,9 @@ namespace gq
 			throw std::runtime_error(u8"In Parser::ParseIdentifier(boost::string_ref&) - Expected selector containing identifier, got empty string.");
 		}
 
-		bool notDone = true;
-
 		int ind = 0;
 
-		while (notDone && ind < static_cast<int>(selectorStr.size()))
+		while (ind < static_cast<int>(selectorStr.size()))
 		{
 			if (selectorStr[ind] == '&')
 			{
@@ -1212,7 +1210,6 @@ namespace gq
 			}
 			else if (!IsNameChar(selectorStr[ind]))
 			{
-				notDone = false;
 				break;
 			}
 
