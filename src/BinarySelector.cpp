@@ -191,7 +191,7 @@ namespace gq
 					return rhsResult;
 				}
 
-				for (parent; parent != nullptr; parent = parent->GetParent())
+				for (; parent != nullptr; parent = parent->GetParent())
 				{
 					if (m_leftHandSide->Match(parent) == true)
 					{

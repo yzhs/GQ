@@ -861,7 +861,7 @@ namespace gq
 								i = 1;
 							}
 
-							for (i; i < lhss.length(); ++i)
+							for (; i < lhss.length(); ++i)
 							{
 								if (!std::isdigit(lhss[i], m_localeEnUS))
 								{
@@ -1115,7 +1115,7 @@ namespace gq
 
 		size_t endOffset = 0;
 		
-		for (pos; pos < selectorStr.size(); ++pos)
+		for (; pos < selectorStr.size(); ++pos)
 		{
 			if (selectorStr[pos] == quoteChar)
 			{
@@ -1187,7 +1187,7 @@ namespace gq
 				// characters immediately following a '\\' and then followed by a space are the hex
 				// value for a unicode character.
 				bool foundEscapeSequenceEnd = false;
-				for (ind; ind < static_cast<int>(selectorStr.size()); ++ind)
+				for (; ind < static_cast<int>(selectorStr.size()); ++ind)
 				{
 					if (IsSpecial(selectorStr[ind]))
 					{
