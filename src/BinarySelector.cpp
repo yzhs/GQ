@@ -45,11 +45,11 @@ namespace gq
 			}
 		#endif
 
-		auto leftHandTagType = m_leftHandSide->GetTagTypeToMatch();
-		auto rightHandTagType = m_rightHandSide->GetTagTypeToMatch();
-
 		#ifndef NDEBUG
 			#ifdef GQ_VERBOSE_DEBUG_NFO
+			auto leftHandTagType = m_leftHandSide->GetTagTypeToMatch();
+			auto rightHandTagType = m_rightHandSide->GetTagTypeToMatch();
+
 			std::cout 
 				<< u8"Built BinarySelector with operator " 
 				<< static_cast<size_t>(m_operator) 

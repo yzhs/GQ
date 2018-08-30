@@ -176,7 +176,7 @@ namespace gq
 
 		if (str.size() > 0)
 		{
-			size_t ei = str.size() - 1;
+			ssize_t ei = str.size() - 1;
 			for (ei = str.size() - 1; ei > 0; --ei)
 			{
 				#ifdef _MSC_VER

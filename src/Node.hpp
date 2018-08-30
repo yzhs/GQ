@@ -96,7 +96,7 @@ namespace gq
 		/// <returns>
 		/// The index within the parent.
 		/// </returns>
-		const size_t GetIndexWithinParent() const;
+		size_t GetIndexWithinParent() const;
 
 		/// <summary>
 		/// Gets the number of children this node has.
@@ -104,7 +104,7 @@ namespace gq
 		/// <returns>
 		/// The total number of child nodes this node contains.
 		/// </returns>
-		const size_t GetNumChildren() const;
+		size_t GetNumChildren() const;
 
 		/// <summary>
 		/// Gets the child at the specified index. Note that this function will throw if the
@@ -130,7 +130,7 @@ namespace gq
 		/// <returns>
 		/// True if the attribute exists, false otherwise. 
 		/// </returns>
-		const bool HasAttribute(const std::string& attributeName) const;
+		bool HasAttribute(const std::string& attributeName) const;
 
 		/// <summary>
 		/// Overload that takes the named attribute by boost::string_ref const reference and returns
@@ -143,7 +143,7 @@ namespace gq
 		/// <returns>
 		/// True if the attribute exists, false otherwise. 
 		/// </returns>
-		const bool HasAttribute(const boost::string_ref attributeName) const;
+		bool HasAttribute(const boost::string_ref attributeName) const;
 
 		/// <summary>
 		/// Check if the node is actually completely empty, or if it contains non-html element
@@ -156,7 +156,7 @@ namespace gq
 		/// True if the object contains absolutely no children of any kind, even text nodes, false
 		/// otherwise.
 		/// </returns>
-		const bool IsEmpty() const;
+		bool IsEmpty() const;
 
 		/// <summary>
 		/// Overload that takes the named attribute by boost::string_ref const reference and returns
@@ -198,7 +198,7 @@ namespace gq
 		/// <returns>
 		/// The starting position of the contents of the node within the original HTML.
 		/// </returns>
-		const size_t GetStartPosition() const;
+		size_t GetStartPosition() const;
 
 		/// <summary>
 		/// Gets the ending position of the contents of the node within the original HTML.
@@ -206,7 +206,7 @@ namespace gq
 		/// <returns>
 		/// The ending position of the contents of the node within the original HTML.
 		/// </returns>
-		const size_t GetEndPosition() const;
+		size_t GetEndPosition() const;
 
 		/// <summary>
 		/// Gets the starting position of the node and its contents, including the node tag, in the
@@ -216,7 +216,7 @@ namespace gq
 		/// The starting position of the node and its contents, including the node tag, in the
 		/// original HTML.
 		/// </returns>
-		const size_t GetStartOuterPosition() const;
+		size_t GetStartOuterPosition() const;
 
 		/// <summary>
 		/// Gets the ending position of the node and its contents, including the node closing tag,
@@ -226,7 +226,7 @@ namespace gq
 		/// The starting position of the node and its contents, including the node closing tag, in
 		/// the original HTML.
 		/// </returns>
-		const size_t GetEndOuterPosition() const;
+		size_t GetEndOuterPosition() const;
 
 		/// <summary>
 		/// Gets the tag of the node as a string.
@@ -242,7 +242,7 @@ namespace gq
 		/// <returns>
 		/// The tag of the node.
 		/// </returns>
-		const GumboTag GetTag() const;
+		GumboTag GetTag() const;
 
 		/// <summary>
 		/// Run a selector against the node and its descendants and return any and all nodes that

@@ -977,7 +977,7 @@ namespace gq
 		}
 	}
 
-	const int Parser::ParseInteger(boost::string_ref& selectorStr) const
+	int Parser::ParseInteger(boost::string_ref& selectorStr) const
 	{
 		if (selectorStr.length() == 0)
 		{
@@ -1049,7 +1049,7 @@ namespace gq
 		TrimLeadingWhitespace(selectorStr);
 	}
 
-	const bool Parser::TrimLeadingWhitespace(boost::string_ref& str) const
+	bool Parser::TrimLeadingWhitespace(boost::string_ref& str) const
 	{
 		// The original SkipWhitespace method in the gumbo-query CParser class not only skipped over
 		// whitespace, but also skipped over comments like /*....*/. I can't see a reason to
@@ -1237,18 +1237,18 @@ namespace gq
 		return value;
 	}
 
-	const bool Parser::IsNameChar(const char& c) const
+	bool Parser::IsNameChar(const char& c) const
 	{
 		// We need to be able to support alphabet, 0-9, underscores
 		return IsNameStart(c) || (c == '-') || (c >= '0' && c <= '9');
 	}
 
-	const bool Parser::IsNameStart(const char& c) const
+	bool Parser::IsNameStart(const char& c) const
 	{
 		return std::isalpha(c, m_localeEnUS) || c == '_';
 	}
 
-	const bool Parser::IsCombinator(const char& c) const
+	bool Parser::IsCombinator(const char& c) const
 	{
 		switch (c)
 		{
@@ -1266,7 +1266,7 @@ namespace gq
 		}
 	}
 
-	const bool Parser::IsSpecial(const char& c) const
+	bool Parser::IsSpecial(const char& c) const
 	{
 		switch (c)
 		{
@@ -1290,7 +1290,7 @@ namespace gq
 		}
 	}
 
-	const bool Parser::IsHexDigit(const char& c) const
+	bool Parser::IsHexDigit(const char& c) const
 	{
 		return std::isxdigit(c, m_localeEnUS);
 	}

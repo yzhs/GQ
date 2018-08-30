@@ -85,12 +85,12 @@ namespace gq
 		return m_parent;
 	}
 
-	const size_t Node::GetIndexWithinParent() const
+	size_t Node::GetIndexWithinParent() const
 	{
 		return m_indexWithinParent;
 	}
 
-	const size_t Node::GetNumChildren() const
+	size_t Node::GetNumChildren() const
 	{
 		return m_children.size();
 	}
@@ -105,19 +105,19 @@ namespace gq
 		return m_children[index].get();
 	}
 
-	const bool Node::HasAttribute(const std::string& attributeName) const
+	bool Node::HasAttribute(const std::string& attributeName) const
 	{
 		boost::string_ref ref(attributeName);
 		return HasAttribute(ref);
 	}
 
-	const bool Node::HasAttribute(const boost::string_ref attributeName) const
+	bool Node::HasAttribute(const boost::string_ref attributeName) const
 	{
 		auto search = m_attributes.find(attributeName);
 		return search != m_attributes.end();
 	}
 
-	const bool Node::IsEmpty() const
+	bool Node::IsEmpty() const
 	{
 		if (m_children.size() > 0)
 		{
@@ -158,7 +158,7 @@ namespace gq
 		return Util::NodeOwnText(this);
 	}
 
-	const size_t Node::GetStartPosition() const
+	size_t Node::GetStartPosition() const
 	{
 		switch (m_node->type)
 		{
@@ -184,7 +184,7 @@ namespace gq
 		}
 	}
 
-	const size_t Node::GetEndPosition() const
+	size_t Node::GetEndPosition() const
 	{
 		switch (m_node->type)
 		{
@@ -210,7 +210,7 @@ namespace gq
 		}
 	}
 
-	const size_t Node::GetStartOuterPosition() const
+	size_t Node::GetStartOuterPosition() const
 	{
 		switch (m_node->type)
 		{
@@ -236,7 +236,7 @@ namespace gq
 		}
 	}
 
-	const size_t Node::GetEndOuterPosition() const
+	size_t Node::GetEndOuterPosition() const
 	{
 		switch (m_node->type)
 		{
@@ -267,7 +267,7 @@ namespace gq
 		return boost::string_ref(m_nodeTagNameString);		
 	}
 
-	const GumboTag Node::GetTag() const
+	GumboTag Node::GetTag() const
 	{
 		return m_node->v.element.tag;
 	}

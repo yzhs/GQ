@@ -134,9 +134,9 @@ namespace gq
 			/// </returns>
 			operator bool() const;
 
-			const bool operator==(const bool other) const;
+			bool operator==(const bool other) const;
 
-			const bool operator!=(const bool other) const;
+			bool operator!=(const bool other) const;
 
 		private:
 
@@ -208,7 +208,7 @@ namespace gq
 		/// <returns>
 		/// The GumboTag, if any, that this selector is to match against.
 		/// </returns>
-		const GumboTag GetTagTypeToMatch() const;	
+		GumboTag GetTagTypeToMatch() const;
 
 		/// <summary>
 		/// Gets the normalized tag name that this selector should match against. 

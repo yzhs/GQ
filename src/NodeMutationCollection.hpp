@@ -107,7 +107,7 @@ namespace gq
 		/// <param name="node">
 		/// True if the supplied node was found and removed from the collection, false otherwise.
 		/// </param>
-		const bool Remove(const Node* node);
+		bool Remove(const Node* node);
 
 		/// <summary>
 		/// Sets the callback to be used at the start of the serialization for a node found in this
@@ -192,7 +192,7 @@ namespace gq
 		/// <returns>
 		/// True if the node is part of this collection, false otherwise.
 		/// </returns>
-		const bool Contains(const GumboNode* rawNode) const;
+		bool Contains(const GumboNode* rawNode) const;
 
 		/// <summary>
 		/// Collection of GumboNode* objects extracted from the Node::m_node private member when

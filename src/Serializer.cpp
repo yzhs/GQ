@@ -267,6 +267,10 @@ namespace gq
 					contents.append(std::string(child->v.text.original_text.data, child->v.text.original_text.length));
 				}
 				break;
+
+                case GUMBO_NODE_DOCUMENT:
+                // explicitly ignore GUMBO_NODE_DOCUMENT
+                ;
 			}
 		}
 

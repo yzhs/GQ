@@ -311,7 +311,7 @@ namespace gq
 		/// <returns>
 		/// The extracted integer value. 
 		/// </returns>
-		const int ParseInteger(boost::string_ref& selectorStr) const;
+		int ParseInteger(boost::string_ref& selectorStr) const;
 
 		/// <summary>
 		/// Trims any whitspace that may be between the start of the supplied selector string and a
@@ -356,7 +356,7 @@ namespace gq
 		/// <returns>
 		/// True if leading whitespace characters were removed, false otherwise.
 		/// </returns>
-		const bool TrimLeadingWhitespace(boost::string_ref& str) const;
+		bool TrimLeadingWhitespace(boost::string_ref& str) const;
 
 		/// <summary>
 		/// Extracts all contents contained between an unescaped opening quote character, and the
@@ -452,7 +452,7 @@ namespace gq
 		/// <returns>
 		/// True of the supplied character is valid for a named entity, false otherwise. 
 		/// </returns>
-		const bool IsNameChar(const char& c) const;
+		bool IsNameChar(const char& c) const;
 
 		/// <summary>
 		/// Checks if the supplied character is a valid starting character for a named entity.
@@ -465,7 +465,7 @@ namespace gq
 		/// True of the supplied character is a valid starting character for a named entity, false
 		/// otherwise.
 		/// </returns>
-		const bool IsNameStart(const char& c) const;
+		bool IsNameStart(const char& c) const;
 
 		/// <summary>
 		/// Checks if the supplied character is a valid CSS selector combinator. 
@@ -476,7 +476,7 @@ namespace gq
 		/// <returns>
 		/// True if the supplied character is a valid CSS selector combinator, false otherwise. 
 		/// </returns>
-		const bool IsCombinator(const char& c) const;
+		bool IsCombinator(const char& c) const;
 
 		/// <summary>
 		/// Check if the supplied character is a "special" character in CSS selectors. Not
@@ -491,7 +491,7 @@ namespace gq
 		/// <returns>
 		/// True if the supplied character is "special", false otherwise. 
 		/// </returns>
-		const bool IsSpecial(const char& c) const;
+		bool IsSpecial(const char& c) const;
 
 		/// <summary>
 		/// Checks if the supplied character is a valid hexidecimal digit. 
@@ -502,7 +502,7 @@ namespace gq
 		/// <returns>
 		/// True if the supplied character is a valid hexidecimal digit, false otherwise. 
 		/// </returns>
-		const bool IsHexDigit(const char& c) const;		
+		bool IsHexDigit(const char& c) const;
 
 	};
 } /* namespace gq */

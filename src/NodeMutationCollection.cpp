@@ -34,7 +34,7 @@ namespace gq
 		}
 	}
 
-	const bool NodeMutationCollection::Remove(const Node* node)
+	bool NodeMutationCollection::Remove(const Node* node)
 	{
 		if (node != nullptr)
 		{
@@ -44,7 +44,7 @@ namespace gq
 		return false;
 	}
 
-	const bool NodeMutationCollection::Contains(const GumboNode* rawNode) const
+	bool NodeMutationCollection::Contains(const GumboNode* rawNode) const
 	{
 		const auto& res = m_rawNodes.find(rawNode);
 

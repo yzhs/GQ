@@ -55,7 +55,7 @@ namespace gq
 
 	}
 
-	const size_t Selection::GetNodeCount() const
+	size_t Selection::GetNodeCount() const
 	{
 		return m_nodes.size();
 	}

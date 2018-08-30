@@ -54,12 +54,12 @@ namespace gq
 		return m_result != nullptr;
 	}
 
-	const bool Selector::MatchResult::operator==(const bool other) const
+	bool Selector::MatchResult::operator==(const bool other) const
 	{
 		return (m_result != nullptr) == other;
 	}
 
-	const bool Selector::MatchResult::operator!=(const bool other) const
+	bool Selector::MatchResult::operator!=(const bool other) const
 	{
 		return (m_result != nullptr) != other;
 	}
@@ -152,7 +152,7 @@ namespace gq
 	{
 	}
 
-	const GumboTag Selector::GetTagTypeToMatch() const
+	GumboTag Selector::GetTagTypeToMatch() const
 	{
 		return m_tagTypeToMatch;
 	}

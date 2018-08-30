@@ -81,7 +81,7 @@ namespace gq
 		/// <returns>
 		/// The total number of nodes contained in this selection.
 		/// </returns>
-		const size_t GetNodeCount() const;
+		size_t GetNodeCount() const;
 
 		/// <summary>
 		/// Fetch a copy of the node at the supplied index. The index must respect the upper and
