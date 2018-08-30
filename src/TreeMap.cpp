@@ -36,7 +36,7 @@ namespace gq
 	TreeMap::~TreeMap()
 	{
 
-	}	
+	}
 
 	void TreeMap::AddNodeToMap(boost::string_ref scope, const Node* node, const AttributeMap& nodeAttributeMap)
 	{
@@ -45,9 +45,9 @@ namespace gq
 		#else
 			if (scope.size() == 0) { throw std::runtime_error(u8"In QTreeMap::AddNodeToMap(boost::string_ref, const Node*, const AttributeMap&) - The supplied scope is empty. This error is impossible unless a user is directly and incorrectly calling this method, or if this class and its required mechanisms are fundamentally broken."); }
 		#endif
-		
+
 		#ifndef NDEBUG
-			#ifdef GQ_VERBOSE_DEBUG_NFO					
+			#ifdef GQ_VERBOSE_DEBUG_NFO
 				std::cout << u8"Adding node " << node->GetUniqueId() << u8" to scope " << scope << u8" with attributes:" << std::endl;
 				for (auto& eachAttr = nodeAttributeMap.begin(); eachAttr != nodeAttributeMap.end(); ++eachAttr)
 				{
@@ -70,13 +70,13 @@ namespace gq
 		else
 		{
 			col = &it->second;
-		}		
+		}
 
 		for (auto nodeAttrMapIt = nodeAttributeMap.begin(); nodeAttrMapIt != nodeAttributeMap.end(); ++nodeAttrMapIt)
 		{
 			// Need to find the attribute key at this scope. If it doesn't exist, create it and push values. If it
 			// does exist, need to append the node. Must append the node both with the value as the key, and as
-			// "*" as the key (for EXISTS lookups).	
+			// "*" as the key (for EXISTS lookups).
 
 			const auto& attr = col->find(nodeAttrMapIt->first);
 
@@ -86,15 +86,15 @@ namespace gq
 				// etc. The node has the attribute being sought, that's all the user cares about.
 				auto newCont1 = std::vector< const Node* >{ node };
 				auto newMap1 = ValueToNodesMap{};
-				newMap1.emplace(std::make_pair(SpecialTraits::GetAnyValue(), std::move(newCont1)));			
-				
+				newMap1.emplace(std::make_pair(SpecialTraits::GetAnyValue(), std::move(newCont1)));
+
 				if (nodeAttrMapIt->second.size() > 0)
 				{
 					auto newCont2 = std::vector< const Node* >{ node };
 
 					// If the attribute is more than EXISTS, and defines a value, push it here as well.
 					newMap1.emplace(std::make_pair(nodeAttrMapIt->second, std::move(newCont2)));
-				}	
+				}
 
 				col->emplace(std::make_pair(nodeAttrMapIt->first, std::move(newMap1)));
 			}
@@ -110,7 +110,7 @@ namespace gq
 				// of the way that we split up space and hyphen delimited lists in attribute values. For example, when
 				// constructing the attribute map for a node with the attribute 'class="one two three"', we'll push
 				// the same attribute "class" into a multimap with three entries: '{"class", "one"}' '{"class", "two"}'
-				// so on and so forth. We don't want to push the same node to the collection three times, this is 
+				// so on and so forth. We don't want to push the same node to the collection three times, this is
 				// wasteful. The node simply needs to be found once for any one of those searches.
 				//
 				// We search for equality of the raw node pointer.
@@ -131,7 +131,7 @@ namespace gq
 					}) == anyValueMatch->second.end())
 					{
 						anyValueMatch->second.push_back(node);
-					}					
+					}
 				}
 				else
 				{
@@ -147,7 +147,7 @@ namespace gq
 					// with the exact same name and value. The only case where the possibility of
 					// duplicates exists is pushing special attributes such as tag name, but because
 					// the tree is built from a document recursively in order and is controlled (hidden
-					// from the user), so long as there are no bugs with this, this itself should 
+					// from the user), so long as there are no bugs with this, this itself should
 					// not produce duplicates either.
 					exactValueMatch->second.push_back(node);
 				}
@@ -158,7 +158,7 @@ namespace gq
 					attr->second.emplace(std::make_pair(nodeAttrMapIt->second, std::move(cont)));
 				}
 			}
-		}		
+		}
 	}
 
 	const std::vector< const Node* >* TreeMap::Get(boost::string_ref scope, boost::string_ref attribute) const
@@ -180,7 +180,7 @@ namespace gq
 				// implementation isn't fundamentally broken.
 				throw std::runtime_error(u8"In TreeMap::Get(boost::string_ref, boost::string_ref, boost::string_ref) - The supplied scope does not exist. This error is impossible unless a user is directly and incorrectly calling this method, or if this class and its required mechanisms are fundamentally broken.");
 			}
-		#endif		
+		#endif
 
 		#ifndef NDEBUG
 			#ifdef GQ_VERBOSE_DEBUG_NFO
@@ -188,20 +188,20 @@ namespace gq
 			#endif
 		#endif
 
-		// Search for the attribute name at this scope		
+		// Search for the attribute name at this scope
 		const auto& byAttrName = atScope->second.find(attribute);
 		if (byAttrName != atScope->second.end())
 		{
 			// If we found matches to the attribute, search for the exact value
 			const auto& byAttrValue = byAttrName->second.find(attributeValue);
-						
+
 			if (byAttrValue != byAttrName->second.end())
 			{
 				// If we have matched both attribute and value, return the corresponding collection.
 				return &byAttrValue->second;
 			}
 		}
-		
+
 		return nullptr;
 	}
 

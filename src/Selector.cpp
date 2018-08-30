@@ -45,7 +45,7 @@ namespace gq
 	}
 
 	const Node* Selector::MatchResult::GetResult() const
-	{		
+	{
 		return m_result;
 	}
 
@@ -120,11 +120,11 @@ namespace gq
 
 		#ifndef NDEBUG
 			#ifdef GQ_VERBOSE_DEBUG_NFO
-			std::cout 
+			std::cout
 				<< u8"Built Selector for nth matching with lhs of "
-				<< std::to_string(leftHandSideOfNth) 
-				<< u8" and rhs of " 
-				<< std::to_string(rightHandSideOfNth) 
+				<< std::to_string(leftHandSideOfNth)
+				<< u8" and rhs of "
+				<< std::to_string(rightHandSideOfNth)
 				<< u8" match last set to "
 				<< std::boolalpha << matchLast
 				<< u8" and match type set to "
@@ -173,7 +173,7 @@ namespace gq
 		switch (m_selectorOperator)
 		{
 			case SelectorOperator::Dummy:
-			{				
+			{
 				return MatchResult(node);
 			}
 			break;
@@ -199,9 +199,9 @@ namespace gq
 				}
 
 				int count = 0;
-				
+
 				auto pNumChild = parent->GetNumChildren();
-				
+
 				for (size_t i = 0; i < pNumChild; i++)
 				{
 					auto child = parent->GetChildAt(i);
@@ -248,7 +248,7 @@ namespace gq
 				// like jquery using selectors, these are not factored in, so to keep our counts
 				// equal to what you'd expect in a real browser environment, we only count children
 				// as described.
-				int validChildCount = 0;				
+				int validChildCount = 0;
 
 				// The actual index is "actual" in the sense that it is adjusted according to the
 				// process described in the comments on validChildCount. This will almost certainly
@@ -263,7 +263,7 @@ namespace gq
 				std::unordered_set<int> validNths;
 
 				for (size_t j = 0; j < parent->GetNumChildren(); j++)
-				{					
+				{
 					auto* child = parent->GetChildAt(j);
 					if ((m_matchType && node->GetTag() != child->GetTag()))
 					{
@@ -290,7 +290,7 @@ namespace gq
 					// ignored everything we don't want to count as real children for the sake of
 					// maths.
 					if (child == node)
-					{						
+					{
 						actualIndex = validChildCount;
 
 						if (!m_matchLast)
@@ -303,10 +303,10 @@ namespace gq
 							++validChildCount;
 							break;
 						}
-					}	
+					}
 
 					++validChildCount;
-				}				
+				}
 
 				if (m_matchLast)
 				{
@@ -314,7 +314,7 @@ namespace gq
 					// valid child count. A valid child depends on if the child is an html element,
 					// and when we're matching types for selectors like (nth-last-of-type), then
 					// valid siblings are further restricted to sibling with the same tag name.
-					// 
+					//
 					// Got a bit off topic, but when we're matching from the end, we want to convert
 					// the index from a "count from start" to "count from end", so substracting
 					// count from start from total count gives us this. In the case that we're not
@@ -322,11 +322,11 @@ namespace gq
 					// not to use zero based indices.
 					actualIndex = validChildCount - actualIndex;
 				}
-				else 
+				else
 				{
 					// Increase the index to convert from zero based indices.
 					actualIndex += 1;
-				}				
+				}
 
 				// Expand the nth calculation against the actual found index of the node. No matter
 				// what the composition of the nth parameter is, this will generate a proper index.
@@ -349,7 +349,7 @@ namespace gq
 			break;
 
 			case SelectorOperator::Tag:
-			{				
+			{
 				if (node->GetTag() == m_tagTypeToMatch)
 				{
 					return MatchResult(node);
@@ -357,7 +357,7 @@ namespace gq
 
 				return nullptr;
 			}
-			break;		
+			break;
 		}
 
 		return nullptr;
@@ -376,7 +376,7 @@ namespace gq
 
 	void Selector::Filter(std::vector< const Node* >& nodes) const
 	{
-		nodes.erase(std::remove_if(nodes.begin(), nodes.end(), 
+		nodes.erase(std::remove_if(nodes.begin(), nodes.end(),
 			[this](const Node* sharedNode)
 			{
 				return !Match(sharedNode);
@@ -396,7 +396,7 @@ namespace gq
 		if (m_tagTypeToMatch != GUMBO_TAG_UNKNOWN)
 		{
 			const char* normalName = gumbo_normalized_tagname(m_tagTypeToMatch);
-			
+
 			m_normalizedTagTypeToMatch = boost::string_ref(normalName);
 
 			// Add the tag type as a match trait
@@ -436,13 +436,13 @@ namespace gq
 		}
 
 		auto nNumChildren = node->GetNumChildren();
-		
+
 		for (size_t i = 0; i < nNumChildren; i++)
 		{
 			auto child = node->GetChildAt(i);
 			MatchAllInto(child, nodes);
 		}
-	}	
+	}
 
 } /* namespace gq */
 

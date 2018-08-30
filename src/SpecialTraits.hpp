@@ -67,14 +67,14 @@ namespace gq
 	/// </summary>
 	class SpecialTraits
 	{
-	
+
 	public:
 
 		/// <summary>
-		/// Gets the unique key used for indexing based on normalized tag name. 
+		/// Gets the unique key used for indexing based on normalized tag name.
 		/// </summary>
 		/// <returns>
-		/// The unique key used for indexing based on normalized tag name. 
+		/// The unique key used for indexing based on normalized tag name.
 		/// </returns>
 		static const boost::string_ref GetTagKey();
 
@@ -108,7 +108,7 @@ namespace gq
 		/// a parent.
 		/// </summary>
 		/// <returns>
-		/// The value used for indexing a node as being the last child within its parent. 
+		/// The value used for indexing a node as being the last child within its parent.
 		/// </returns>
 		static const boost::string_ref GetLastChildValue();
 

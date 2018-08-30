@@ -91,7 +91,7 @@ namespace gq
 	}
 
 	const Selector::MatchResult TextSelector::Match(const Node* node) const
-	{		
+	{
 		switch (m_operator)
 		{
 			case SelectorOperator::Contains:
@@ -105,7 +105,7 @@ namespace gq
 				{
 					return MatchResult(node);
 				}
-				
+
 				return nullptr;
 			}
 			break;

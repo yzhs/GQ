@@ -96,7 +96,7 @@ namespace gq
 		/// and therefore not possible to construct a selector with no parameter to function on.
 		/// </summary>
 		/// <param name="key">
-		/// The attribute name to match if it exists. 
+		/// The attribute name to match if it exists.
 		/// </param>
 		AttributeSelector(boost::string_ref key);
 
@@ -112,10 +112,10 @@ namespace gq
 		/// matched.
 		/// </param>
 		/// <param name="key">
-		/// The attribute name to match. 
+		/// The attribute name to match.
 		/// </param>
 		/// <param name="value">
-		/// The attribute value to match. 
+		/// The attribute value to match.
 		/// </param>
 		AttributeSelector(SelectorOperator op, boost::string_ref key, boost::string_ref value);
 
@@ -125,16 +125,16 @@ namespace gq
 		virtual ~AttributeSelector();
 
 		/// <summary>
-		/// Check if this selector is a match against the supplied node. 
+		/// Check if this selector is a match against the supplied node.
 		/// </summary>
 		/// <param name="node">
-		/// The node to attempt to match against. 
+		/// The node to attempt to match against.
 		/// </param>
 		/// <returns>
 		/// True if this selector was successfully matched against the supplied node, false
 		/// otherwise.
 		/// </returns>
-		virtual const MatchResult Match(const Node* node) const;		
+		virtual const MatchResult Match(const Node* node) const;
 
 	private:
 

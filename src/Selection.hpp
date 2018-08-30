@@ -55,7 +55,7 @@ namespace gq
 		/// pointer cannot be nullptr and this constructor will throw if it is.
 		/// </summary>
 		/// <param name="node">
-		/// The valid UniqueNode to build the selection from. 
+		/// The valid UniqueNode to build the selection from.
 		/// </param>
 		Selection(const Node* node);
 

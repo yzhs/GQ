@@ -66,7 +66,7 @@ namespace gq
 			/// Dummy, matches no matter what.
 			/// </summary>
 			Dummy,
-			
+
 			/// <summary>
 			/// Match against elements that contain no valid child elements.
 			/// </summary>
@@ -93,7 +93,7 @@ namespace gq
 		/// nodes. When such selectors are run, they are expected to return the most righthand
 		/// object specified in the selector. As such, returning a simple boolean on the public
 		/// interface is not sufficient to give users an accurate collection of matched nodes.
-		/// 
+		///
 		/// To meet this requirement, it's necessary to return a structure, rather than a simple
 		/// bool yes or no that the supplied Node is a match, since while a match may have been
 		/// found, the match may be in actuality a descendant of the supplied Node.
@@ -126,7 +126,7 @@ namespace gq
 			const Node* GetResult() const;
 
 			/// <summary>
-			/// Determine if this result contains a valid match or not. 
+			/// Determine if this result contains a valid match or not.
 			/// </summary>
 			/// <returns>
 			/// True if this object represents a successful match and contains a pointer to the node
@@ -149,18 +149,18 @@ namespace gq
 		Selector();
 
 		/// <summary>
-		/// Constructs a Selector with the specified operator. 
+		/// Constructs a Selector with the specified operator.
 		/// </summary>
 		/// <param name="op">
-		/// The operator to define the functionality of this selector. 
+		/// The operator to define the functionality of this selector.
 		/// </param>
 		Selector(SelectorOperator op);
 
 		/// <summary>
-		/// Construct a selector meant to match a single element. 
+		/// Construct a selector meant to match a single element.
 		/// </summary>
 		/// <param name="matchType">
-		/// Determine if the single element is bound to a specific type or not. 
+		/// Determine if the single element is bound to a specific type or not.
 		/// </param>
 		Selector(const bool matchType);
 
@@ -183,7 +183,7 @@ namespace gq
 		/// the supplied offsets calculate which element to select.
 		/// </param>
 		/// <param name="matchType">
-		/// Determine if matching is bound to a specific type. 
+		/// Determine if matching is bound to a specific type.
 		/// </param>
 		Selector(const int leftHandSideOfNth, const int rightHandSideOfNth, const bool matchLast, const bool matchType);
 
@@ -192,7 +192,7 @@ namespace gq
 		/// type.
 		/// </summary>
 		/// <param name="tagTypeToMatch">
-		/// The type of tag/element to match. 
+		/// The type of tag/element to match.
 		/// </param>
 		Selector(GumboTag tagTypeToMatch);
 
@@ -203,7 +203,7 @@ namespace gq
 
 		/// <summary>
 		/// Gets the GumboTag that this selector is to match against. If this selector is not built with the ::Tag matching operator, then the
-		/// result will be empty. Default value is empty/nothing. 
+		/// result will be empty. Default value is empty/nothing.
 		/// </summary>
 		/// <returns>
 		/// The GumboTag, if any, that this selector is to match against.
@@ -211,29 +211,29 @@ namespace gq
 		GumboTag GetTagTypeToMatch() const;
 
 		/// <summary>
-		/// Gets the normalized tag name that this selector should match against. 
+		/// Gets the normalized tag name that this selector should match against.
 		/// </summary>
 		/// <returns>
 		/// The normalized tag name that this selector should match against. Empty no tag is
 		/// specified.
 		/// </returns>
 		const boost::string_ref GetNormalizedTagTypeToMatch() const;
-		
+
 		/// <summary>
 		/// Get a collection of attributes that this selector requires for the sake of matching.
 		/// These attributes are used internally in Node and Document to filter potential match
 		/// candidates by.
 		/// </summary>
 		/// <returns>
-		/// A collection of attributes that can be used to narrow down potential match candidates. 
+		/// A collection of attributes that can be used to narrow down potential match candidates.
 		/// </returns>
 		const std::vector< std::pair<boost::string_ref, boost::string_ref> >& GetMatchTraits() const;
 
 		/// <summary>
-		/// Check if this selector is a match against the supplied node. 
+		/// Check if this selector is a match against the supplied node.
 		/// </summary>
 		/// <param name="node">
-		/// The node to attempt to match against. 
+		/// The node to attempt to match against.
 		/// </param>
 		/// <returns>
 		/// True if this selector was successfully matched against the supplied node, false
@@ -246,10 +246,10 @@ namespace gq
 		/// returning a collection of all nodes that were positively matched by this selector.
 		/// </summary>
 		/// <param name="node">
-		/// The node to match against, as well as it's descendants. 
+		/// The node to match against, as well as it's descendants.
 		/// </param>
 		/// <returns>
-		/// A collection of all nodes matched by this selector. 
+		/// A collection of all nodes matched by this selector.
 		/// </returns>
 		void MatchAll(const Node* node, std::vector< const Node* >& results) const;
 
@@ -258,7 +258,7 @@ namespace gq
 		/// not positively match against this selector.
 		/// </summary>
 		/// <param name="nodes">
-		/// A collection of nodes to filter. 
+		/// A collection of nodes to filter.
 		/// </param>
 		void Filter(std::vector< const Node* >& nodes) const;
 
@@ -288,7 +288,7 @@ namespace gq
 		/// recursive match testing.
 		/// </summary>
 		/// <param name="key">
-		/// The trait key. The key should be the name of some attribute in a potential candidate. 
+		/// The trait key. The key should be the name of some attribute in a potential candidate.
 		/// </param>
 		/// <param name="value">
 		/// The trait value. The value should either be an exact value match sought in a potential
@@ -299,7 +299,7 @@ namespace gq
 		void AddMatchTrait(boost::string_ref key, boost::string_ref value);
 
 	private:
-		
+
 		/// <summary>
 		/// If the selector is a tag selector, this member will store the type of GumboTag the
 		/// selector must match against.
@@ -337,7 +337,7 @@ namespace gq
 		int m_rightHandSideOfNth = 0;
 
 		/// <summary>
-		/// If this member is true, then in our matching code, it means we're doing some sort of 
+		/// If this member is true, then in our matching code, it means we're doing some sort of
 		/// last match, where we're takes to match the last or nth last or last-of-type.
 		/// </summary>
 		bool m_matchLast;
@@ -355,7 +355,7 @@ namespace gq
 		/// I know I've explained this to death, but I want to save the user the burden I had of
 		/// resolving the true meaning/purpose of this member.
 		/// </summary>
-		bool m_matchType;	
+		bool m_matchType;
 
 		/// <summary>
 		/// A copy of the original selector string. Is only set if the user requested that the
@@ -385,10 +385,10 @@ namespace gq
 		/// descandants.
 		/// </summary>
 		/// <param name="node">
-		/// The present node to process. 
+		/// The present node to process.
 		/// </param>
 		/// <param name="nodes">
-		/// The existing collection of matched nodes to append matches to. 
+		/// The existing collection of matched nodes to append matches to.
 		/// </param>
 		void MatchAllInto(const Node* node, std::vector< const Node* >& nodes) const;
 

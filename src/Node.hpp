@@ -38,7 +38,7 @@
 
 namespace gq
 {
-	
+
 	class Selection;
 	class TreeMap;
 
@@ -56,7 +56,7 @@ namespace gq
 	/// objects returned in smart pointer containers are given over to the user to manage.
 	/// </summary>
 	class Node
-	{		
+	{
 
 		/// <summary>
 		/// In the original library, the CNode (Node now) was completely separate from everything
@@ -71,7 +71,7 @@ namespace gq
 		friend class Serializer;
 		friend class NodeMutationCollection;
 
-	public:	
+	public:
 
 		/// <summary>
 		/// Default destructor.
@@ -113,10 +113,10 @@ namespace gq
 		/// returned (zero based index).
 		/// </summary>
 		/// <param name="index">
-		/// The index of the child to retrieve. 
+		/// The index of the child to retrieve.
 		/// </param>
 		/// <returns>
-		/// A valid and non-nullptr UniqueNode representing the child at the supplied index. 
+		/// A valid and non-nullptr UniqueNode representing the child at the supplied index.
 		/// </returns>
 		const Node* GetChildAt(const size_t index) const;
 
@@ -125,10 +125,10 @@ namespace gq
 		/// searching.
 		/// </summary>
 		/// <param name="attributeName">
-		/// The name of the attribute to check. 
+		/// The name of the attribute to check.
 		/// </param>
 		/// <returns>
-		/// True if the attribute exists, false otherwise. 
+		/// True if the attribute exists, false otherwise.
 		/// </returns>
 		bool HasAttribute(const std::string& attributeName) const;
 
@@ -138,10 +138,10 @@ namespace gq
 		/// searching.
 		/// </summary>
 		/// <param name="attributeName">
-		/// The name of the attribute to check. 
+		/// The name of the attribute to check.
 		/// </param>
 		/// <returns>
-		/// True if the attribute exists, false otherwise. 
+		/// True if the attribute exists, false otherwise.
 		/// </returns>
 		bool HasAttribute(const boost::string_ref attributeName) const;
 
@@ -164,7 +164,7 @@ namespace gq
 		/// attribute lookup and comparison without making any copies of string data.
 		/// </summary>
 		/// <param name="attributeName">
-		/// The named attribute to return the value of. 
+		/// The named attribute to return the value of.
 		/// </param>
 		/// <returns>
 		/// A boost::string_ref which may be empty if the supplied named attribute was not found or
@@ -173,7 +173,7 @@ namespace gq
 		boost::string_ref GetAttributeValue(const boost::string_ref attributeName) const;
 
 		/// <summary>
-		/// Gets the text of this node and all of its text descendants combined. 
+		/// Gets the text of this node and all of its text descendants combined.
 		/// </summary>
 		/// <returns>
 		/// A string which may be empty if this node is not a text node and none of its descendants
@@ -183,7 +183,7 @@ namespace gq
 		std::string GetText() const;
 
 		/// <summary>
-		/// Gets the text of only the children of this node. 
+		/// Gets the text of only the children of this node.
 		/// </summary>
 		/// <returns>
 		/// A string which may be empty if none of this nodes children are text nodes. Otherwise,
@@ -257,7 +257,7 @@ namespace gq
 		/// and discard selectors after use.
 		/// </summary>
 		/// <param name="selectorString">
-		/// The selector string to query against the node and its descendants with. 
+		/// The selector string to query against the node and its descendants with.
 		/// </param>
 		/// <returns>
 		/// A collection of nodes that were matched by the supplied selector. If no matches were
@@ -270,7 +270,7 @@ namespace gq
 		/// were matched by the supplied compiled selector.
 		/// </summary>
 		/// <param name="selector">
-		/// The precompiled selector object to query against the node and its descendants with. 
+		/// The precompiled selector object to query against the node and its descendants with.
 		/// </param>
 		/// <returns>
 		/// A collection of nodes that were matched by the supplied selector. If no matches were
@@ -294,7 +294,7 @@ namespace gq
 		/// and discard selectors after use.
 		/// </summary>
 		/// <param name="selectorString">
-		/// The selector string to query against the node and its descendants with. 
+		/// The selector string to query against the node and its descendants with.
 		/// </param>
 		/// <param name="func">
 		/// The callback that positive matches will be supplied to.
@@ -308,7 +308,7 @@ namespace gq
 		/// iteration, rather then collecting matches and then iterating over them again.
 		/// </summary>
 		/// <param name="selectorString">
-		/// The precompiled selector object to query against the node and its descendants with. 
+		/// The precompiled selector object to query against the node and its descendants with.
 		/// </param>
 		/// <param name="func">
 		/// The callback that positive matches will be supplied to.
@@ -351,7 +351,7 @@ namespace gq
 		/// method will throw.
 		/// </param>
 		/// <returns>
-		/// A UniqueNode instance. 
+		/// A UniqueNode instance.
 		/// </returns>
 		static std::unique_ptr<Node> Create(const GumboNode* node, TreeMap* map, const std::string& parentId, const size_t indexWithinParent = 0, Node* parent = nullptr);
 
@@ -361,10 +361,10 @@ namespace gq
 		Node();
 
 		/// <summary>
-		/// Constructs a new node around a raw GumboNode pointer. 
+		/// Constructs a new node around a raw GumboNode pointer.
 		/// </summary>
 		/// <param name="node">
-		/// Pointer to a GumboNode. Must not be nullptr. 
+		/// Pointer to a GumboNode. Must not be nullptr.
 		/// </param>
 		/// <param name="newUniqueId">
 		/// The generated unique ID for the new node. This must be completely constructed before
@@ -378,7 +378,7 @@ namespace gq
 		/// object.
 		/// </param>
 		/// <param name="parent">
-		/// Pointer to the parent GumboNode. Can be nullptr. 
+		/// Pointer to the parent GumboNode. Can be nullptr.
 		/// </param>
 		Node(const GumboNode* node, const std::string newUniqueId, const size_t indexWithinParent, Node* parent);
 
@@ -426,7 +426,7 @@ namespace gq
 			}
 
 			std::vector<std::pair<boost::string_ref, boost::string_ref>>::const_iterator begin() const
-			{								
+			{
 				return m_collection.begin();
 			}
 
@@ -442,7 +442,7 @@ namespace gq
 					{
 						auto oneSize = str.first.size();
 						auto twoSize = value.first.size();
-						
+
 						if (oneSize != twoSize)
 						{
 							return false;
@@ -450,9 +450,9 @@ namespace gq
 
 						if (oneSize >= 4)
 						{
-							if ((str.first[0] == value.first[0]) && 
-								(str.first[1] == value.first[1]) && 
-								(str.first[oneSize - 1] == value.first[oneSize - 1]) && 
+							if ((str.first[0] == value.first[0]) &&
+								(str.first[1] == value.first[1]) &&
+								(str.first[oneSize - 1] == value.first[oneSize - 1]) &&
 								(str.first[oneSize - 2] == value.first[oneSize - 2]))
 							{
 								return std::memcmp(str.first.begin(), value.second.begin(), oneSize) == 0;
@@ -486,9 +486,9 @@ namespace gq
 
 					if (oneSize >= 4)
 					{
-						if ((str.first[0] == key[0]) && 
-							(str.first[1] == key[1]) && 
-							(str.first[oneSize - 1] == key[oneSize - 1]) && 
+						if ((str.first[0] == key[0]) &&
+							(str.first[1] == key[1]) &&
+							(str.first[oneSize - 1] == key[oneSize - 1]) &&
 							(str.first[oneSize - 2] == key[oneSize - 2]))
 						{
 							return std::memcmp(str.first.begin(), key.begin(), oneSize) == 0;

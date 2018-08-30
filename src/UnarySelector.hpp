@@ -79,7 +79,7 @@ namespace gq
 		/// matched.
 		/// </param>
 		/// <param name="selector">
-		/// The base selector to be used to perform actual condition/compositional matching. 
+		/// The base selector to be used to perform actual condition/compositional matching.
 		/// </param>
 		UnarySelector(SelectorOperator op, SharedSelector selector);
 
@@ -89,10 +89,10 @@ namespace gq
 		virtual ~UnarySelector();
 
 		/// <summary>
-		/// Check if this selector is a match against the supplied node. 
+		/// Check if this selector is a match against the supplied node.
 		/// </summary>
 		/// <param name="node">
-		/// The node to attempt to match against. 
+		/// The node to attempt to match against.
 		/// </param>
 		/// <returns>
 		/// True if this selector was successfully matched against the supplied node, false
@@ -121,10 +121,10 @@ namespace gq
 		/// this recursive function.
 		/// </summary>
 		/// <param name="node">
-		/// The node containing children to recursively match against. 
+		/// The node containing children to recursively match against.
 		/// </param>
 		/// <returns>
-		/// True if any of the supplied nodes descendants was a match, false otherwise. 
+		/// True if any of the supplied nodes descendants was a match, false otherwise.
 		/// </returns>
 		const MatchResult HasDescendantMatch(const Node* node) const;
 

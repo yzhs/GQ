@@ -37,7 +37,7 @@ namespace gq
 {
 
 	const std::unordered_map<boost::string_ref, Parser::PseudoOp, StringRefHash> Parser::PseudoOps =
-	{ 
+	{
 		{ u8"not", PseudoOp::Not },
 		{ u8"has", PseudoOp::Has },
 		{ u8"haschild", PseudoOp::HasChild },
@@ -80,20 +80,20 @@ namespace gq
 		{
 			SharedSelector result = ParseSelectorGroup(input);
 
-			if (input.size() != 0) 
-			{ 
+			if (input.size() != 0)
+			{
 				// There's no assert on debug here, because it's expected that user input may
 				// contain invalid data. Passing a poorly formatted selector string isn't a matter
 				// of a developer user using the library improperly, so no assert. The idea is that
 				// any user should expect this method to throw and hence be ready to handle it, and
 				// that a detailed message of the issue be returned in the error.
-				throw std::runtime_error(u8"In Parser::CreateSelector(std::string, const bool) - Improperly formatted selector string."); 
+				throw std::runtime_error(u8"In Parser::CreateSelector(std::string, const bool) - Improperly formatted selector string.");
 			}
 
 			if (retainOriginalString)
 			{
 				result->m_originalSelectorString = std::move(selectorString);
-			}			
+			}
 
 			return result;
 		}
@@ -103,12 +103,12 @@ namespace gq
 			errorMessage.append(std::string(u8" -- [HERE>>>>>") + input.to_string() + std::string(u8"<<<<<]"));
 
 			throw std::runtime_error(errorMessage.c_str());
-		}		
+		}
 	}
 
 	SharedSelector Parser::ParseSelectorGroup(boost::string_ref& selectorStr) const
 	{
-		// Parse the first selector object from the input supplied. 
+		// Parse the first selector object from the input supplied.
 		SharedSelector ret = ParseSelector(selectorStr);
 
 		// ParseSelector() will stop if it encounters a character in the selector string that
@@ -116,7 +116,7 @@ namespace gq
 		// while ParseSelector() is consuming input, it will break and return the most recently
 		// constructed Selector. This also applies if it finds a closing parenthesis, an
 		// indication that the internals of a pseudo selector are finished being built.
-		// 
+		//
 		// So, after we get an initial return, we'll continue to recursively build selectors and
 		// combine them until no more "," group indicators are found and/or the end of the input has
 		// been reached.
@@ -152,7 +152,7 @@ namespace gq
 				if (selectorStr.size() > 0 && combinator == ' ' && IsCombinator(selectorStr[0]))
 				{
 					combinator = selectorStr[0];
-					
+
 					if (!IsCombinator(combinator))
 					{
 						throw std::runtime_error(u8"In Parser::ParseSelector(boost::string_ref&) - Invalid combinator supplied.");
@@ -323,7 +323,7 @@ namespace gq
 						// class selector makes up the primary function of the selector. If we
 						// didn't do this, there would be no reliable attributes by which to
 						// discover candidates.
-						// 
+						//
 						// Consider the pseudo class selector ":not(p)". Without this little trick,
 						// the only attributes we'd get from such a selector are {
 						// NORMALIZED_TAG_NAME_KEY, p }, which would only find candidates which
@@ -334,7 +334,7 @@ namespace gq
 				break;
 
 				default:
-				{					
+				{
 					notDone = false;
 				}
 				break;
@@ -369,7 +369,7 @@ namespace gq
 
 		boost::string_ref name = ParseIdentifier(selectorStr);
 
-		// Unfortunately, we need to copy out to a new string so we can force it to lower case 
+		// Unfortunately, we need to copy out to a new string so we can force it to lower case
 		std::string nameAsString = name.to_string();
 		boost::to_lower(nameAsString);
 		name = boost::string_ref(nameAsString);
@@ -473,7 +473,7 @@ namespace gq
 
 				bool matchLast = (pseudoOperatorResult->second == PseudoOp::NthLastChild || pseudoOperatorResult->second == PseudoOp::NthLastOfType);
 				bool matchType = (pseudoOperatorResult->second == PseudoOp::NthOfType || pseudoOperatorResult->second == PseudoOp::NthLastOfType);
-				
+
 				return std::make_shared<Selector>(lhs, rhs, matchLast, matchType);
 			}
 			break;
@@ -751,7 +751,7 @@ namespace gq
 		}
 
 		boost::string_ref id = u8"id";
-		
+
 		return std::make_shared<AttributeSelector>(AttributeSelector::SelectorOperator::ValueEquals, id, elementId);
 	}
 
@@ -763,7 +763,7 @@ namespace gq
 		}
 
 		boost::string_ref tag = ParseIdentifier(selectorStr);
-			 
+
 		return std::make_shared<Selector>(gumbo_tag_enum(tag.to_string().c_str()));
 	}
 
@@ -868,7 +868,7 @@ namespace gq
 							}
 
 							lhs = std::stoi(lhss);
-						}						
+						}
 					}
 
 					// The right hand side must be just a number, be it positive, negative, doesn't
@@ -881,11 +881,11 @@ namespace gq
 					}
 
 					size_t rhsslen = rhss.length();
-					
+
 					for (size_t i = rhsStartPos; i < rhsslen; ++i)
 					{
 						if (!std::isdigit(rhss[i], m_localeEnUS))
-						{							
+						{
 							std::string errMessage(u8"In Parser::ParseNth(boost::string_ref&, const int& ,const int&) - Nth parameter right hand side \"");
 							errMessage.append(rhss).append(u8"\" contained non-digit input.");
 							throw std::runtime_error(errMessage.c_str());
@@ -1112,7 +1112,7 @@ namespace gq
 		}
 
 		size_t endOffset = 0;
-		
+
 		for (; pos < selectorStr.size(); ++pos)
 		{
 			if (selectorStr[pos] == quoteChar)
@@ -1127,7 +1127,7 @@ namespace gq
 					endOffset = pos;
 					break;
 				}
-				
+
 			}
 		}
 
@@ -1214,12 +1214,12 @@ namespace gq
 			}
 
 			++ind;
-		}		
+		}
 
 		if (ind <= 0)
 		{
 			throw std::runtime_error(u8"In Parser::ParseIdentifier(boost::string_ref&) - Expected selector containing identifier, yet no valid identifier was found.");
-		}		
+		}
 
 		if (ind > static_cast<int>(selectorStr.size()))
 		{
@@ -1227,8 +1227,8 @@ namespace gq
 		}
 
 		boost::string_ref value = selectorStr.substr(0, ind);
-		selectorStr = selectorStr.substr(ind);		
-		
+		selectorStr = selectorStr.substr(ind);
+
 		return value;
 	}
 

@@ -43,11 +43,11 @@ namespace gq
 		std::string newNodeId = parentId + std::string(u8"A") + std::to_string(indexWithinParent);
 		auto newNode = std::unique_ptr<Node>{ new Node(node, newNodeId, indexWithinParent, parent) };
 
-		#ifndef NDEBUG		
+		#ifndef NDEBUG
 			assert(map != nullptr && u8"In Node::Create(const GumboNode*, TreeMap*, const std::string&, const size_t, Node*) - Cannot initialize a Node without a valid TreeMap* pointer. TreeMap* is nullptr.");
-		#else		
+		#else
 			if (map == nullptr) { throw std::runtime_error(u8"In Node::Create(const GumboNode*, TreeMap*, const std::string&, const size_t, Node*) - Cannot initialize a Node without a valid TreeMap* pointer. TreeMap* is nullptr."); }
-		#endif	
+		#endif
 
 		newNode->m_rootTreeMap = map;
 
@@ -63,17 +63,17 @@ namespace gq
 	}
 
 	Node::Node(const GumboNode* node, const std::string newUniqueId, const size_t indexWithinParent, Node* parent) :
-		m_node(node), 
+		m_node(node),
 		m_parent(parent),
 		m_indexWithinParent(indexWithinParent),
 		m_nodeUniqueId(std::move(newUniqueId))
-	{		
+	{
 		#ifndef NDEBUG
-			assert(node != nullptr && u8"In Node::Node(const GumboNode*) - Cannot construct a Node around a nullptr.");		
+			assert(node != nullptr && u8"In Node::Node(const GumboNode*) - Cannot construct a Node around a nullptr.");
 		#else
-			if (node == nullptr) { throw std::runtime_error(u8"In Node::Node(const GumboNode*) - Cannot construct a Node around a nullptr."); }		
-		#endif			
-	}	
+			if (node == nullptr) { throw std::runtime_error(u8"In Node::Node(const GumboNode*) - Cannot construct a Node around a nullptr."); }
+		#endif
+	}
 
 	Node::~Node()
 	{
@@ -138,7 +138,7 @@ namespace gq
 	}
 
 	boost::string_ref Node::GetAttributeValue(const boost::string_ref attributeName) const
-	{			
+	{
 		auto res = m_attributes.find(attributeName);
 		if (res != m_attributes.end())
 		{
@@ -163,7 +163,7 @@ namespace gq
 		switch (m_node->type)
 		{
 			case GUMBO_NODE_ELEMENT:
-			{				
+			{
 				return m_node->v.element.start_pos.offset + m_node->v.element.original_tag.length;
 			}
 			break;
@@ -263,8 +263,8 @@ namespace gq
 	}
 
 	boost::string_ref Node::GetTagName() const
-	{	
-		return boost::string_ref(m_nodeTagNameString);		
+	{
+		return boost::string_ref(m_nodeTagNameString);
 	}
 
 	GumboTag Node::GetTag() const
@@ -291,7 +291,7 @@ namespace gq
 		#endif
 
 		std::vector<const Node*> matchResults;
-		
+
 		const auto& traits = selector->GetMatchTraits();
 
 		// The collected map ensure that we don't store duplicate matches. Any time a match is made,
@@ -362,7 +362,7 @@ namespace gq
 						auto* matchedNode = matchTest.GetResult();
 
 						if (collected.find(matchedNode->GetUniqueId()) == collected.end())
-						{							
+						{
 							collected.insert({ matchedNode->GetUniqueId(), matchedNode->GetUniqueId() });
 							matchResults.push_back(matchedNode);
 						}
@@ -498,7 +498,7 @@ namespace gq
 		{
 			const GumboNode* child = static_cast<GumboNode*>(m_node->v.element.children.data[i]);
 			if (child->type != GUMBO_NODE_ELEMENT && child->type != GUMBO_NODE_TEMPLATE)
-			{				
+			{
 				continue;
 			}
 
@@ -507,7 +507,7 @@ namespace gq
 			{
 				m_children.emplace_back(std::move(sChild));
 				++trueIndex;
-			}			
+			}
 		}
 	}
 
@@ -550,7 +550,7 @@ namespace gq
 				{
 					attribValue = boost::string_ref(attribute->original_value.data, attribute->original_value.length);
 				}
-				
+
 				attribValue = Util::TrimEnclosingQuotes(attribValue);
 
 				if (attribName.size() == 0)
@@ -586,13 +586,13 @@ namespace gq
 					}
 				}
 			}
-		}		
+		}
 
 		#ifndef GQ_FIND_NO_OP
 		// Add the attributes to the tree map
 		m_rootTreeMap->AddNodeToMap(GetUniqueId(), this, treeAttribMap);
 
-		// Now we need to recursively append upwards. 
+		// Now we need to recursively append upwards.
 		for (Node* parent = GetParent(); parent != nullptr; parent = parent->GetParent())
 		{
 			auto parentScopeId = parent->GetUniqueId();

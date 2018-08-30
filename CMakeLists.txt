@@ -3,10 +3,10 @@
 cmake_minimum_required(VERSION 3.0)
 
 if(UNIX)
-  
+
   # C++14
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wl,--no-undefined -Wl,--no-allow-shlib-undefined")
-  
+
 endif(UNIX)
 
 find_package(PkgConfig REQUIRED)
@@ -27,17 +27,17 @@ add_library(GQ SHARED
   src/Node.hpp
   src/NodeMutationCollection.cpp
   src/NodeMutationCollection.hpp
-  src/Parser.cpp 
-  src/Parser.hpp 
-  src/Selection.cpp 
-  src/Selection.hpp 
-  src/Selector.cpp 
-  src/Selector.hpp 
-  src/Serializer.cpp 
-  src/Serializer.hpp 
-  src/SpecialTraits.cpp 
-  src/SpecialTraits.hpp 
-  src/StrRefHash.hpp 
+  src/Parser.cpp
+  src/Parser.hpp
+  src/Selection.cpp
+  src/Selection.hpp
+  src/Selector.cpp
+  src/Selector.hpp
+  src/Serializer.cpp
+  src/Serializer.hpp
+  src/SpecialTraits.cpp
+  src/SpecialTraits.hpp
+  src/StrRefHash.hpp
   src/TextSelector.cpp
   src/TextSelector.hpp
   src/TreeMap.cpp
@@ -52,4 +52,3 @@ target_link_libraries(GQ ${GUMBO_LIBRARIES})
 
 
 
-  

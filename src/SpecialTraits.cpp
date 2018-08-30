@@ -52,7 +52,7 @@ namespace gq
 	}
 
 	const boost::string_ref SpecialTraits::GetLastChildValue()
-	{		
+	{
 		return boost::string_ref(u8"last-child");
 	}
 

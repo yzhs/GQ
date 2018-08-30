@@ -102,7 +102,7 @@ namespace gq
 			case SelectorOperator::HasChild:
 			{
 				auto nNumChildren = node->GetNumChildren();
-			
+
 				for (size_t i = 0; i < nNumChildren; i++)
 				{
 					auto child = node->GetChildAt(i);
@@ -118,9 +118,9 @@ namespace gq
 					}
 				}
 
-				return nullptr;				
+				return nullptr;
 			}
-			break;	
+			break;
 		}
 
 		// Just to shut up the compiler.

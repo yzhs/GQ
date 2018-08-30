@@ -34,11 +34,11 @@
 /// <summary>
 /// The purpose of this test is threefold. One, load the "parsingtest.data" list of selectors and
 /// parse them all, ensuring that no errors are thrown while parsing them.
-/// 
+///
 /// The second is to, in the event that no errors are thrown, benchmark parsing the list just to get
 /// a sense of the speed of the parser when dealing with "in the wild" data. This isn't really
 /// necessary to test, since GQ allows caching/saving of final compiled selectors. But hey, why not.
-/// 
+///
 /// The third is to, again in the event of no errors on first pass, load the HTML from a given
 /// website and benchmark running all of the selectors against it, to get an idea of speed on
 /// matching against "in the wild" data.
@@ -48,7 +48,7 @@ int main()
 
 	std::string parsingTestDataFilePath(u8"../../parsingtest.data");
 	std::string htmlTestDataFilePath(u8"../../testhtml.data");
-	
+
 	std::ifstream in(parsingTestDataFilePath, std::ios::binary | std::ios::in);
 
 	if (in.fail() || !in.is_open())
@@ -56,12 +56,12 @@ int main()
 		std::cout << u8"Failed to load \"../../parsingtest.data\" test file." << std::endl;
 		return -1;
 	}
-		
+
 	std::string testContents;
 	in.seekg(0, std::ios::end);
-	
+
 	auto ptfsize = in.tellg();
-	
+
 	if (ptfsize < 0 || static_cast<unsigned long long>(ptfsize) > static_cast<unsigned long long>(std::numeric_limits<size_t>::max()))
 	{
 		std::cout << u8"When loading parsingtest.data, ifstream::tellg() returned either less than zero or a number greater than this program can correctly handle." << std::endl;
@@ -108,7 +108,7 @@ int main()
 		{
 			std::cout << u8"Failed to locate the test number and or the test selector after test " << lastRunTestNumber << u8". The test data is improperly formatted. Aboring." << std::endl;
 			return -1;
-		}			
+		}
 
 		// Save the last finished test number in case the above try block fails and we exit due to bad formatting
 		// of the test data.
@@ -126,14 +126,14 @@ int main()
 		{
 			anyHandledException = true;
 			std::cout << std::endl;
-			std::cout << u8"In test number " << testNumber << u8" using selector string " << selectorString << u8" got runtime_error: " << e.what() << std::endl;			
+			std::cout << u8"In test number " << testNumber << u8" using selector string " << selectorString << u8" got runtime_error: " << e.what() << std::endl;
 		}
 		catch (std::exception& e)
 		{
 			anyHandledException = true;
 			std::cout << std::endl;
 			std::cout << u8"In test number " << testNumber << u8" using selector string " << selectorString << u8" got exception: " << e.what() << std::endl;
-		}	
+		}
 	}
 
 	std::cout << u8"Processed " << totalSelectorsProcessed << u8" selectors. Had handled errors? " << std::boolalpha << anyHandledException << std::endl;
@@ -143,7 +143,7 @@ int main()
 		std::cout << u8"Aborting benchmarks because errors were detected in the initial parsing test." << std::endl;
 		return -1;
 	}
-	
+
 	std::cout << u8"Benchmarking parsing speed." << std::endl;
 
 	size_t parseCount = 100;
@@ -168,14 +168,14 @@ int main()
 
 	// _______________________________________________________________________________________________ //
 	// _______________________________________________________________________________________________ //
-	
+
 	std::ifstream htmlFile(htmlTestDataFilePath, std::ios::binary | std::ios::in);
 
 	if (htmlFile.fail() || !htmlFile.is_open())
 	{
 		std::cout << u8"Failed to load \"../../testhtml.data\" test file." << std::endl;
 		return -1;
-	}	
+	}
 
 	std::string testHtmlContents;
 	htmlFile.seekg(0, std::ios::end);
@@ -214,7 +214,7 @@ int main()
 		{
 			std::cout << e.what() << std::endl;
 			return -1;
-		}		
+		}
 	}
 
 	std::cout << u8"Benchmarking document parsing." << std::endl;
@@ -227,16 +227,16 @@ int main()
 	{
 		auto doc = gq::Document::Create();
 		doc->Parse(testHtmlContents);
-	}	
+	}
 
 	auto documentBuildEnd = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double, std::milli> documentBuildTime = documentBuildEnd - documentBuildStart;
-	
+
 	std::cout << "Time taken to parse " << documentParseCount << u8" documents: " << documentBuildTime.count() << u8" ms." << std::endl;
 
 	std::cout << "Processed at a rate of " << (documentBuildTime.count() / documentParseCount) << u8" milliseconds per document." << std::endl;
 
-	std::cout << u8"Benchmarking selection speed." << std::endl;	
+	std::cout << u8"Benchmarking selection speed." << std::endl;
 
 	auto testDocument = gq::Document::Create();
 	testDocument->Parse(testHtmlContents);
@@ -252,7 +252,7 @@ int main()
 		for (size_t i = 0; i < precompiledSelectors.size(); ++i)
 		{
 			auto selectionResults = testDocument->Find(precompiledSelectors[i]);
-			
+
 			#ifndef NDEBUG
 			std::cout << "Total matches: " << selectionResults.GetNodeCount() << std::endl;
 			#endif
@@ -267,8 +267,8 @@ int main()
 
 	std::cout << "Time taken to run " << (precompiledSelectors.size() * selectCount) << u8" selectors against the document: " << selectionBenchTime.count() << u8" ms producing " << totalMatches << u8" total matches." << std::endl;
 
-	std::cout << "Processed at a rate of " << (selectionBenchTime.count() / (precompiledSelectors.size() * selectCount)) << u8" milliseconds per selector or " << ((precompiledSelectors.size() * selectCount) / selectionBenchTime.count()) << u8" selectors per millisecond." << std::endl;	
-    
+	std::cout << "Processed at a rate of " << (selectionBenchTime.count() / (precompiledSelectors.size() * selectCount)) << u8" milliseconds per selector or " << ((precompiledSelectors.size() * selectCount) / selectionBenchTime.count()) << u8" selectors per millisecond." << std::endl;
+
 	// _______________________________________________________________________________________________ //
 	// _______________________________________________________________________________________________ //
 
@@ -293,7 +293,7 @@ int main()
 			{
 			case GumboTag::GUMBO_TAG_A:
 			{
-				// Let's just return without adding anything, which will omit this "a" tag from the 
+				// Let's just return without adding anything, which will omit this "a" tag from the
 				// final output. Since we do this without any other condition, all "a" tags that we
 				// collected with our selector(s) will be omitted.
 				return false;
@@ -322,7 +322,7 @@ int main()
 				[&collection](const gq::Node* node)->void
 			{
 				collection.Add(node);
-			});			
+			});
 		}
 
 		// Give our mutation collection to the serialize method and get the serialization result.

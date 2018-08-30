@@ -59,14 +59,14 @@ int main(int argc, char *argv[])
 	}
 
 	std::string htmlTestDataFilePath(argv[1]);
-	
+
 	std::ifstream htmlFile(htmlTestDataFilePath, std::ios::binary | std::ios::in);
 
 	if (htmlFile.fail() || !htmlFile.is_open())
 	{
 		std::cout << u8"Failed to load " << htmlTestDataFilePath << u8" test file." << std::endl;
 		return -1;
-	}	
+	}
 
 	std::string testHtmlContents;
 	htmlFile.seekg(0, std::ios::end);
@@ -94,9 +94,9 @@ int main(int argc, char *argv[])
 	{
 		std::cout << e.what() << std::endl;
 		return -1;
-	}	
+	}
 
-	gq::NodeMutationCollection collection;	
+	gq::NodeMutationCollection collection;
 
 	// OnTagStart allows us to choose whether or not allow a certain tag type matched by our
 	// selector(s) to be serialized at all.
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
 		switch (tag)
 		{
 			case GumboTag::GUMBO_TAG_A:
-			{	
+			{
 				// Let's just return false, which will omit this "a" tag from the final output.
 				// Since we're saying "false" which means "don't serialize this", all children
 				// of this node will be omitted from output as well.
@@ -115,14 +115,14 @@ int main(int argc, char *argv[])
 			break;
 
 			case GumboTag::GUMBO_TAG_SCRIPT:
-			{							
+			{
 				// Same deal as "a" tags.
 				return false;
 			}
 			break;
 
 			default:
-			{	
+			{
 				// Let's keep everything else we selected.
 				return true;
 			}
@@ -138,12 +138,12 @@ int main(int argc, char *argv[])
 		switch (tag)
 		{
 			case GumboTag::GUMBO_TAG_IMG:
-			case GumboTag::GUMBO_TAG_IMAGE:				
+			case GumboTag::GUMBO_TAG_IMAGE:
 			{
 				// Let's make all images point to something super spoopy.
 				if (attributeName.compare(u8"src") == 0)
 				{
-				
+
 					tagString.append(BuildAttribute(attributeName, boost::string_ref(u8"https://i.ytimg.com/vi/dY_h3q6vgmY/maxresdefault.jpg")));
 				}
 				else
@@ -224,7 +224,7 @@ int main(int argc, char *argv[])
 			break;
 		}
 	});
-	
+
 	// Create a parser to build a selector from a string/
 	gq::Parser selectorParser;
 
@@ -238,7 +238,7 @@ int main(int argc, char *argv[])
 	{
 		// Wrap our selector parsing in a try/catch, since it goes without
 		// saying that parsing user input can definitely throw.
-		selector = selectorParser.CreateSelector(selectorString);	
+		selector = selectorParser.CreateSelector(selectorString);
 
 		if (selector == nullptr)
 		{
@@ -252,7 +252,7 @@ int main(int argc, char *argv[])
 		std::cout << error.what() << std::endl;
 		return -1;
 	}
-	
+
 	// Tell the document to give us every node that matches our selector in a callback.
 	// There may or may not be duplicates given to us. We don't really care too much
 	// about that here.

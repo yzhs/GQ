@@ -32,7 +32,7 @@
 /// The purpose of this test is to load the "matchingtest.data" data file and run the tests laid out
 /// in that file, checking for failures. The "matchingtest.data" file contains a series of
 /// predefined selectors and html to test the selectors against.
-/// 
+///
 /// Run this test as well as GQ in debug mode to get an extreme amount of information about the
 /// internals of the parser, selector construction, etc. To get this additional information, ensure
 /// that while compiling GQ in debug mode, you add "GQ_VERBOSE_DEBUG_NFO" to the preprocessor
@@ -118,7 +118,7 @@ int main()
 			}
 		}
 	}
-	
+
 	size_t testsPassed = 0;
 	size_t testsFailed = 0;
 
@@ -146,16 +146,16 @@ int main()
 			std::cout << testHtmlSamples[i] << std::endl << std::endl;
 
 			document->Parse(testHtmlSamples[i]);
-			
+
 			std::cout << u8"Parsed Output HTML:" << std::endl;
 			std::cout << document->GetOuterHtml();
 
 			try
 			{
 				std::cout << std::endl;
-				
+
 				auto selector = parser.CreateSelector(testSelectors[i], true);
-				auto result = document->Find(selector);				
+				auto result = document->Find(selector);
 				std::cout << u8"Original Selector String: " << selector->GetOriginalSelectorString() << std::endl << std::endl;
 
 				if (result.GetNodeCount() != testExpectedMatches[i].second)
@@ -172,7 +172,7 @@ int main()
 				else
 				{
 					// If the test pair bool is true, that means that we're not just counting results, but that we're
-					// also validating the results. We'll check the results to see if they contain the test "FAIL". If 
+					// also validating the results. We'll check the results to see if they contain the test "FAIL". If
 					// they do, that means that an element that should not have been selected by the selector was indeed
 					// selected. If "FAIL" is not matched, "PASS" is assumed.
 					if (testExpectedMatches[i].first == true)
@@ -182,7 +182,7 @@ int main()
 						{
 							auto* node = result.GetNodeAt(ri);
 							if (node->GetOwnText().compare("FAIL") == 0)
-							{								
+							{
 								foundInvalidData = true;
 								break;
 							}
@@ -199,13 +199,13 @@ int main()
 						{
 							std::cout << u8"Test Number " << testNumbers[i] << u8" passed using selector " << testSelectors[i] << u8" because the correct number of expected matches were returned the match data was confirmed." << std::endl;
 							++testsPassed;
-						}						
+						}
 					}
 					else
 					{
 						std::cout << u8"Test Number " << testNumbers[i] << u8" passed using selector " << testSelectors[i] << u8" because " << testExpectedMatches[i].second << u8" matches were expected, received " << result.GetNodeCount() << u8". Test does not verify results, only quantity." << std::endl;
 						++testsPassed;
-					}					
+					}
 				}
 			}
 			catch (std::runtime_error& e)
@@ -215,8 +215,8 @@ int main()
 			catch (std::exception& e)
 			{
 				std::cout << u8"Got exception: " << e.what() << std::endl;
-			}		
-		}		
+			}
+		}
 	}
 	else
 	{

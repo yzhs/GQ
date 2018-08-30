@@ -40,7 +40,7 @@ namespace gq
 		if (gumboOutput != nullptr)
 		{
 			auto doc = std::unique_ptr<Document>{ new Document(gumboOutput) };
-			
+
 			// Must call init to build out and index children.
 			doc->Init();
 
@@ -50,22 +50,22 @@ namespace gq
 		return std::unique_ptr<Document>{ new Document() };
 	}
 
-	Document::Document() : 
+	Document::Document() :
 		m_parsingOptions(kGumboDefaultOptions)
 	{
-		
+
 	}
 
 	Document::Document(GumboOutput* gumboOutput) :
 		m_gumboOutput(gumboOutput), m_parsingOptions(kGumboDefaultOptions)
 	{
-		// No attempting to construct explicitly supplying a pointer, when its null. 
+		// No attempting to construct explicitly supplying a pointer, when its null.
 		#ifndef NDEBUG
 			assert(gumboOutput != nullptr && u8"In Document::Document(GumboOutput*) - Supplied GumboOutput* is nulltr! Use the parameterless constructor.");
 		#else
 			if (gumboOutput == nullptr) { throw std::runtime_error(u8"In Document::Document(GumboOutput*) - Supplied GumboOutput* is nulltr! Use the parameterless constructor."); }
 		#endif
-		
+
 		m_node = m_gumboOutput->root;
 	}
 
@@ -90,7 +90,7 @@ namespace gq
 		{
 			gumbo_destroy_output(&m_parsingOptions, m_gumboOutput);
 		}
-		
+
 		m_gumboOutput = gumbo_parse_with_options(&m_parsingOptions, source.c_str(), source.size());
 
 		// Check if we got coal in our stocking.
@@ -100,8 +100,8 @@ namespace gq
 		}
 
 		// Check if we got absolutely nothing in our stocking. If we didn't then, santa isn't real.
-		if (m_gumboOutput->root == nullptr 
-			|| m_gumboOutput->root->v.element.children.length == 0 
+		if (m_gumboOutput->root == nullptr
+			|| m_gumboOutput->root->v.element.children.length == 0
 			|| static_cast<GumboNode*>(m_gumboOutput->root->v.element.children.data[0])->v.element.children.length == 0)
 		{
 			throw std::runtime_error(u8"In Document::Parse(const std::string&) - Failed to generate any HTML nodes from parsing process. The supplied string is most likely invalid HTML.");

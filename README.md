@@ -101,12 +101,12 @@ Time per cycle 34.7862 ms.
 Processed at a rate of 0.00125827 milliseconds per selector or 794.741 selectors per millisecond.
 ```
 
-As you can see, approaching double the speed over the [yahoo.com](https://yahoo.com) website's landing page.  
+As you can see, approaching double the speed over the [yahoo.com](https://yahoo.com) website's landing page.
 
 Speed doesn't mean much if the matching code is broken. As such, over 40 tests currently exist that ensure correct functionality of various types of selectors. ~~I have yet to write tests for nested and combined selectors.~~
 
 ## Configuration
-~~Presently, there are only scripts/project files for building GQ under Windows with Visual Studio 2015. There is no reason why GQ cannot be used under Linux or OSX, I just simply have not gone there yet. It will come soon.~~   
+~~Presently, there are only scripts/project files for building GQ under Windows with Visual Studio 2015. There is no reason why GQ cannot be used under Linux or OSX, I just simply have not gone there yet. It will come soon.~~
 A recent contribution to the repository has added Cmake support, and bug fixes to enable correct functionality under Linux.
 There is a minimal amount of setup required for building under Windows with VS, and it's detailed in the [Wiki](https://github.com/TechnikEmpire/GQ/wiki).
 
@@ -125,7 +125,7 @@ There is a minimal amount of setup required for building under Windows with VS, 
  - Remove custom rolled automatic reference counting, remove any sort of `shared_ptr` and make lifetime management simple.
  - Fix broken parsing that was ported from cascadia, but is invalid for use with Gumbo Parser.
  - Make parsing/matching produce the same behavior as jQuery does on the exact same test data.
- - Replace `std::string` with `boost::string_ref` wherever string copies don't truly need to be generated.  
+ - Replace `std::string` with `boost::string_ref` wherever string copies don't truly need to be generated.
  - Implement a mapping system to dramatically increase matching speed by filtering potential matches by traits.
  - Remove local state tracking from the selector parser.
  - Expose compiled selectors to the public so that they can be retained and recycled against existing and new documents.

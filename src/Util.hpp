@@ -37,8 +37,8 @@
 #include <boost/utility/string_ref.hpp>
 
 namespace gq
-{	
-	
+{
+
 	class Node;
 
 	/// <summary>
@@ -48,16 +48,16 @@ namespace gq
 	class Util
 	{
 
-	public:		
+	public:
 
 		/// <summary>
-		/// Get the text of the supplied node and all of its descendants. 
+		/// Get the text of the supplied node and all of its descendants.
 		/// </summary>
 		/// <param name="node">
-		/// The node from which to extract text from it and all of its descendants. 
+		/// The node from which to extract text from it and all of its descendants.
 		/// </param>
 		/// <returns>
-		/// All text contained in the supplied node and all of its descendants combined. 
+		/// All text contained in the supplied node and all of its descendants combined.
 		/// </returns>
 		static std::string NodeText(const Node* node);
 
@@ -77,10 +77,10 @@ namespace gq
 		/// of nodes.
 		/// </summary>
 		/// <param name="nodeCollection">
-		/// The collection of nodes to search within. 
+		/// The collection of nodes to search within.
 		/// </param>
 		/// <param name="search">
-		/// The node to search for. 
+		/// The node to search for.
 		/// </param>
 		/// <returns>
 		/// True if the supplied search node was found in the supplied collection of nodes, false
@@ -124,7 +124,7 @@ namespace gq
 		/// enclosing quotes present. In order to ensure proper matching, they must be trimmed.
 		/// </summary>
 		/// <param name="str">
-		/// The string to trim enclosing quotation characters from. 
+		/// The string to trim enclosing quotation characters from.
 		/// </param>
 		static boost::string_ref TrimEnclosingQuotes(boost::string_ref str);
 

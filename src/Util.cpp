@@ -80,7 +80,7 @@ namespace gq
 			return false;
 		}
 
-		return std::find_if(nodeCollection.begin(), nodeCollection.end(), 
+		return std::find_if(nodeCollection.begin(), nodeCollection.end(),
 			[search](const Node* item)
 			{
 				return item->m_node == search;
@@ -107,11 +107,11 @@ namespace gq
 	}
 
 	void Util::UnionNodes(std::vector< const Node* >& primaryCollection, const std::vector< const Node* >& collection)
-	{		
+	{
 		primaryCollection.reserve(primaryCollection.size() + collection.size());
 		primaryCollection.insert(primaryCollection.end(), collection.begin(), collection.end());
-		
-		RemoveDuplicates(primaryCollection);		
+
+		RemoveDuplicates(primaryCollection);
 	}
 
 	boost::string_ref Util::TrimEnclosingQuotes(boost::string_ref str)
@@ -199,7 +199,7 @@ namespace gq
 				// +1 because we've got a zero based index passed as length, which isn't.
 				str = str.substr(0, ei+1);
 			}
-		}	
+		}
 
 		return str;
 	}
@@ -233,7 +233,7 @@ namespace gq
 		{
 
 			const GumboStringPiece* piece = &node->v.element.original_tag;
-			
+
 			if (piece != nullptr)
 			{
 				GumboStringPiece gsp = *piece;

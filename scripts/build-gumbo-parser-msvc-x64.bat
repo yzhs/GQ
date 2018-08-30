@@ -1,16 +1,16 @@
-:: 
+::
 :: Copyright (c) 2015 Jesse Nicholson
-:: 
+::
 :: Permission is hereby granted, free of charge, to any person obtaining a copy
 :: of this software and associated documentation files (the "Software"), to deal
 :: in the Software without restriction, including without limitation the rights
 :: to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 :: copies of the Software, and to permit persons to whom the Software is
 :: furnished to do so, subject to the following conditions:
-:: 
+::
 :: The above copyright notice and this permission notice shall be included in
 :: all copies or substantial portions of the Software.
-:: 
+::
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 :: IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 :: FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
@@ -18,16 +18,16 @@
 :: LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 :: OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 :: THE SOFTWARE.
-:: 
+::
 @echo off
 
 setlocal enabledelayedexpansion
 
-:: Set GUMBO_VERSION to the extracted folder name, which includes the 
-:: version. So, as an example, in 
-:: PROJECT_ROOT_DIR\deps\gumbo-parser, you should have extracted 
-:: lets say Gumbo Parser 0.10.1. So you'll have 
-:: PROJECT_ROOT_DIR\deps\gumbo-parser\gumbo-parser-0.10.1\SOURCES. 
+:: Set GUMBO_VERSION to the extracted folder name, which includes the
+:: version. So, as an example, in
+:: PROJECT_ROOT_DIR\deps\gumbo-parser, you should have extracted
+:: lets say Gumbo Parser 0.10.1. So you'll have
+:: PROJECT_ROOT_DIR\deps\gumbo-parser\gumbo-parser-0.10.1\SOURCES.
 :: Therefore, set GUMBO_VERSION to "gumbo-parser-0.10.1" like so:
 :: GUMBO_VERSION=gumbo-parser-0.10.1
 set GUMBO_VERSION=%1
@@ -35,10 +35,10 @@ set GUMBO_VERSION=%1
 :: Make sure the variables have been set.
 if [%GUMBO_VERSION%] == [] GOTO RequiresSetup
 
-:: Invoke the 64 bit Visual Studio command prompt environment, for 64 
-:: bit build tool stuff to be setup. If you have installed VS 2015 to a 
-:: non-standard place, or have an older version of VS, you will need to 
-:: change this line. 
+:: Invoke the 64 bit Visual Studio command prompt environment, for 64
+:: bit build tool stuff to be setup. If you have installed VS 2015 to a
+:: non-standard place, or have an older version of VS, you will need to
+:: change this line.
 call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
 
 :: Change the current directory to the gumbo-parser source directory.
@@ -73,8 +73,8 @@ mkdir "..\..\msvc\Debug x64\lib"
 mkdir "..\..\msvc\Release x64 AVX"
 mkdir "..\..\msvc\Release x64 AVX\lib"
 
-:: Copy the build output (dll and lib files), as well as the headers to 
-:: the generated output directories. 
+:: Copy the build output (dll and lib files), as well as the headers to
+:: the generated output directories.
 xcopy /Y *.dll "..\..\msvc\Release x64\lib\"
 xcopy /Y *.lib "..\..\msvc\Release x64\lib\"
 xcopy /Y *.h "..\..\msvc\include\gumboparser\"
@@ -89,8 +89,8 @@ cl.exe /nologo /D_USRDLL /D_WINDLL /Fo%cd%\obj\ /DEBUG /Zi /MDd /LD  /I %cd% /I 
 :: Generate corresponding LIB file.
 LIB /NOLOGO /MACHINE:x64 /OUT:gumbo_parser.lib %OBJS%
 
-:: Copy the build output (dll and lib files) to the generated output 
-:: directories. 
+:: Copy the build output (dll and lib files) to the generated output
+:: directories.
 xcopy /Y *.dll "..\..\msvc\Debug x64\lib\"
 xcopy /Y *.lib "..\..\msvc\Debug x64\lib\"
 xcopy /Y *.pdb "..\..\msvc\Debug x64\lib\"
@@ -104,8 +104,8 @@ cl.exe /nologo /D_USRDLL /D_WINDLL /Fo%cd%\obj\ /O2 /Oi /Ot /GL /GF /GS- /Gy /fp
 :: Generate corresponding LIB file.
 LIB /NOLOGO /LTCG /MACHINE:x64 /OUT:gumbo_parser.lib %OBJS%
 
-:: Copy the build output (dll and lib files) to the generated output 
-:: directories. 
+:: Copy the build output (dll and lib files) to the generated output
+:: directories.
 xcopy /Y *.dll "..\..\msvc\Release x64 AVX\lib\"
 xcopy /Y *.lib "..\..\msvc\Release x64 AVX\lib\"
 
@@ -115,9 +115,9 @@ cd %cd%\..\..\..\..\scripts
 :: Quit
 exit /B
 
-:: This will print out help information to the console to assist the 
-:: user in correctly configuring the script in the event that the variables 
-:: were not setup. 
+:: This will print out help information to the console to assist the
+:: user in correctly configuring the script in the event that the variables
+:: were not setup.
 :RequiresSetup
 echo. & echo Please edit this batch file to have the following variables set correctly: & echo.
 echo 	GUMBO_VERSION - Set this to the name of the Gumbo Parser source directory, the folder which includes the version number in it. & echo.

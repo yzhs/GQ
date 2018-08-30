@@ -37,7 +37,7 @@
 	that shouldn't be around in 2015.
 
 	If you're thinking ERMERGOSH HE DISABLED TEH WARNINGS:
-	
+
 		"The correctness of the program, however, is unaffected by the truncated name."
 
 		Source: http://msdn.microsoft.com/en-us/library/074af4b6%28v=vs.80%29.aspx
@@ -46,7 +46,7 @@
 namespace gq
 {
 
-	class Node;	
+	class Node;
 
 	/// <summary>
 	/// The TreeMap class serves the purpose of indexing an HTML document and all of its elements
@@ -71,7 +71,7 @@ namespace gq
 	/// well, among other things. For more on that, look at the SpecialTraitKeys class.
 	/// </summary>
 	class TreeMap
-	{	
+	{
 
 		/// <summary>
 		/// Node and its descendants are the only ones who actually need to access this object and
@@ -85,7 +85,7 @@ namespace gq
 		~TreeMap();
 
 	private:
-		
+
 		typedef std::multimap<boost::string_ref, boost::string_ref> AttributeMap;
 
 		TreeMap();
@@ -96,7 +96,7 @@ namespace gq
 		/// and referenced.
 		/// </summary>
 		/// <param name="node">
-		/// The node that the supplied attribute map belongs to. 
+		/// The node that the supplied attribute map belongs to.
 		/// </param>
 		/// <param name="nodeAttributeMap">
 		/// The pre-built attribute map which has mapped the properties (attributes) of this node
@@ -115,10 +115,10 @@ namespace gq
 		/// parameter. Use the overload that takes the exact value for such lookups.
 		/// </summary>
 		/// <param name="scope">
-		/// The scope to search within. The scope is the value of Node::GetUniqueId(). 
+		/// The scope to search within. The scope is the value of Node::GetUniqueId().
 		/// </param>
 		/// <param name="attribute">
-		/// The attribute which must exist. 
+		/// The attribute which must exist.
 		/// </param>
 		/// <returns>
 		/// A collection of nodes which may contain zero or more elements, depending on how many
@@ -135,13 +135,13 @@ namespace gq
 		/// value.
 		/// </summary>
 		/// <param name="scope">
-		/// The scope to search within. The scope is the value of Node::GetUniqueId(). 
+		/// The scope to search within. The scope is the value of Node::GetUniqueId().
 		/// </param>
 		/// <param name="attribute">
-		/// The attribute which must exist. 
+		/// The attribute which must exist.
 		/// </param>
 		/// <param name="attribute">
-		/// The attribute value which must exactly match. 
+		/// The attribute value which must exactly match.
 		/// </param>
 		/// <returns>
 		/// A collection of nodes which may contain zero or more elements, depending on how many
@@ -203,7 +203,7 @@ namespace gq
 		/// the wild made up attributes, and also to avoid detection and deliberate fudging of the
 		/// operation of this library.
 		/// </summary>
-		ScopedAttributeMap m_scopedAttributes;		
+		ScopedAttributeMap m_scopedAttributes;
 
 	};
 

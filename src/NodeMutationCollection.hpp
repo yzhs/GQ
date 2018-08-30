@@ -79,7 +79,7 @@ namespace gq
 	/// logic to perform serialization for that node, rather than by itself.
 	/// </summary>
 	class NodeMutationCollection
-	{		
+	{
 		friend class Serializer;
 
 	public:
@@ -93,7 +93,7 @@ namespace gq
 		/// serialization delegated to the user.
 		/// </summary>
 		/// <param name="node">
-		/// A node that requires custom serialization. 
+		/// A node that requires custom serialization.
 		/// </param>
 		void Add(const Node* node);
 
@@ -172,7 +172,7 @@ namespace gq
 		/// user has added to this collection.
 		/// </param>
 		void SetOnTagContent(OnTagContentCallback callback);
-		
+
 		/// <summary>
 		/// Gets the number of elements in the collection.
 		/// </summary>

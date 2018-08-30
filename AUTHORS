@@ -1,11 +1,11 @@
-This is a list of Authors who directly or indirectly contributed to this 
-project, along with a brief summary of the contribution. 
+This is a list of Authors who directly or indirectly contributed to this
+project, along with a brief summary of the contribution.
 
 ------------------------------------------------------------------------
 
 Author Name, Location and Email:
 	Steven Joruk - Manchester, England - steven@joruk.com
-	
+
 Author Contribution:
 	Additions to Cmake build process, documentation, etc.
 
@@ -16,7 +16,7 @@ Original Work:
 
 Author Name, Location and Email:
 	Henri Hyyryläinen - Finland
-	
+
 Author Contribution:
 	Cmake support, bug fixes and Linux compatibility.
 
@@ -27,11 +27,11 @@ Original Work:
 
 Author Name, Location and Email:
 	Andy Balholm - Clayton, Washington / Unknown
-	
+
 Author Contribution:
-	The original author of Cascadia, a GO selector library which 
-	gumbo-query is based on. Cascadia is licensed under the MIT 
-	License. 
+	The original author of Cascadia, a GO selector library which
+	gumbo-query is based on. Cascadia is licensed under the MIT
+	License.
 
 Original Work:
 	https://github.com/lazytiger/gumbo-query
@@ -40,7 +40,7 @@ Original Work:
 
 Author Name, Location and Email:
 	Hoping White aka LazyTiger, Haidian, Beijing - baihaoping@gmail.com
-	
+
 Author Contribution:
 	Author of gumbo-query, a C++ selector library for gumbo-parser, based
 	on the GO library Cascadia. This software is under the same license
@@ -52,16 +52,16 @@ Original Work:
 ------------------------------------------------------------------------
 
 Author Name, Location and Email:
-	Kevin B. Hendricks, Stratford, Ontario - khendricks@wlu.ca 
-	
+	Kevin B. Hendricks, Stratford, Ontario - khendricks@wlu.ca
+
 Author Contribution:
-	Author of the serialize.cc example in the Gumbo Parser repository. This 
-example was modified into a utility class for converting parsed nodes 
-or entire GumboOutput back into an HTML string. This utility allows 
+	Author of the serialize.cc example in the Gumbo Parser repository. This
+example was modified into a utility class for converting parsed nodes
+or entire GumboOutput back into an HTML string. This utility allows
 users to manipulate nodes matched by selectors. This work is licensed under
 the Apache License, Version 2.0.
 
 Original Work:
-	https://github.com/google/gumbo-parser/blob/master/examples/serialize.cc 
-	
+	https://github.com/google/gumbo-parser/blob/master/examples/serialize.cc
+
 ------------------------------------------------------------------------

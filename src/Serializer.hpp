@@ -46,14 +46,14 @@ namespace gq
 		/// used behind the scenes to give the behavior of the jquery method .Html().
 		/// </summary>
 		/// <param name="node">
-		/// The node to serialize along with all of its contents. 
+		/// The node to serialize along with all of its contents.
 		/// </param>
 		/// <param name="mutationCollection">
 		/// User defined collection of nodes that the user has requested to have control of the
 		/// serialization process for.
 		/// </param>
 		/// <returns>
-		/// The HTML string built from the node and all of its contents. 
+		/// The HTML string built from the node and all of its contents.
 		/// </returns>
 		static std::string Serialize(const Node* node, const NodeMutationCollection* mutationCollection = nullptr);
 
@@ -62,10 +62,10 @@ namespace gq
 		/// used behind the scenes to give the behavior of the jquery method .Html().
 		/// </summary>
 		/// <param name="node">
-		/// The node to serialize along with all of its contents. 
+		/// The node to serialize along with all of its contents.
 		/// </param>
 		/// <returns>
-		/// The HTML string built from the node and all of its contents. 
+		/// The HTML string built from the node and all of its contents.
 		/// </returns>
 		static std::string Serialize(const GumboNode* node, const NodeMutationCollection* mutationCollection = nullptr);
 
@@ -115,39 +115,39 @@ namespace gq
 		static const std::unordered_set<boost::string_ref, StringRefHash> SpecialHandling;
 
 		/// <summary>
-		/// Gets a string representation of the tag name for the supplied node. 
+		/// Gets a string representation of the tag name for the supplied node.
 		/// </summary>
 		/// <param name="node">
-		/// The node from which to extract the string tag name. 
+		/// The node from which to extract the string tag name.
 		/// </param>
 		/// <returns>
-		/// A string representation of the tag name for the supplied node. 
+		/// A string representation of the tag name for the supplied node.
 		/// </returns>
 		static std::string GetTagName(const GumboNode* node);
 
 		/// <summary>
-		/// Builds a correct string DOCTYPE declaration for the supplied node. 
+		/// Builds a correct string DOCTYPE declaration for the supplied node.
 		/// </summary>
 		/// <param name="node">
-		/// The document node from which to build the DOCTYPE declaration string. 
+		/// The document node from which to build the DOCTYPE declaration string.
 		/// </param>
 		/// <returns>
-		/// A string DOCTYPE declaration for the supplied document node. 
+		/// A string DOCTYPE declaration for the supplied document node.
 		/// </returns>
 		static std::string BuildDocType(const GumboNode* node);
 
 		/// <summary>
-		/// Builds a string representation of the attributes supplied. 
+		/// Builds a string representation of the attributes supplied.
 		/// </summary>
 		/// <param name="at">
-		/// The attributes to serialize. 
+		/// The attributes to serialize.
 		/// </param>
 		/// <param name="noEntities">
 		/// A bool used to indicate if special XML characters within any of the attribute values
 		/// should be converted to character references or not.
 		/// </param>
 		/// <returns>
-		/// A string containing all of the attribute names and values. 
+		/// A string containing all of the attribute names and values.
 		/// </returns>
 		static std::string BuildAttributes(const GumboAttribute* at);
 	};

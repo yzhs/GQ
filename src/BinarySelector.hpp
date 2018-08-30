@@ -56,7 +56,7 @@ namespace gq
 			/// An intersection selector requires that two distinct selectors both match against the
 			/// same object in order to make a complete match. If a both match, then the intersection
 			/// selector declares a match. If one or more do not match, then the intersection selector
-			/// declares no match. 
+			/// declares no match.
 			/// </summary>
 			Intersection,
 
@@ -111,10 +111,10 @@ namespace gq
 		/// form a match.
 		/// </param>
 		/// <param name="left">
-		/// The left hand side of the combined selector. 
+		/// The left hand side of the combined selector.
 		/// </param>
 		/// <param name="right">
-		/// The right hand side of the combined selector. 
+		/// The right hand side of the combined selector.
 		/// </param>
 		BinarySelector(SelectorOperator op, SharedSelector left, SharedSelector right);
 
@@ -124,10 +124,10 @@ namespace gq
 		virtual ~BinarySelector();
 
 		/// <summary>
-		/// Check if this selector is a match against the supplied node. 
+		/// Check if this selector is a match against the supplied node.
 		/// </summary>
 		/// <param name="node">
-		/// The node to attempt to match against. 
+		/// The node to attempt to match against.
 		/// </param>
 		/// <returns>
 		/// True if this selector was successfully matched against the supplied node, false
@@ -138,7 +138,7 @@ namespace gq
 	private:
 
 		/// <summary>
-		/// The left hand side of the binary selector to match against a node. 
+		/// The left hand side of the binary selector to match against a node.
 		/// </summary>
 		SharedSelector m_leftHandSide;
 

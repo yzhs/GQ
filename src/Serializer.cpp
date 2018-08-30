@@ -72,7 +72,7 @@ namespace gq
 	}
 
 	std::string Serializer::Serialize(const GumboNode* node, const NodeMutationCollection* mutationCollection)
-	{		
+	{
 		// special case the document node
 		if (node->type == GUMBO_NODE_DOCUMENT)
 		{
@@ -118,13 +118,13 @@ namespace gq
 		bool needSpecialHandling = (SpecialHandling.find(tagNameStrRef) != SpecialHandling.end());
 		bool isEmptyTag = (EmptyTags.find(tagNameStrRef) != EmptyTags.end());
 
-		// build attributes into a single string  
-		const GumboVector* attribs = &node->v.element.attributes;		
-		
+		// build attributes into a single string
+		const GumboVector* attribs = &node->v.element.attributes;
+
 		for (size_t i = 0; i < attribs->length; ++i)
 		{
 			GumboAttribute* attribute = static_cast<GumboAttribute*>(attribs->data[i]);
-			
+
 			if (foundNodeInUserCollection && mutationCollection->m_onTagAttribute)
 			{
 				boost::string_ref attribName;
@@ -138,7 +138,7 @@ namespace gq
 				if (attribute->original_value.length > 0)
 				{
 					attribValue = Util::TrimEnclosingQuotes(boost::string_ref(attribute->original_value.data, attribute->original_value.length));
-				}				
+				}
 
 				if (attribName.size() > 0)
 				{
@@ -147,7 +147,7 @@ namespace gq
 
 				continue;
 			}
-			
+
 			atts.append(BuildAttributes(attribute));
 		}
 
@@ -162,7 +162,7 @@ namespace gq
 
 		// serialize your contents
 		std::string contents;
-		
+
 		if (foundNodeInUserCollection && mutationCollection->m_onTagContent)
 		{
 			auto result = mutationCollection->m_onTagContent(node->v.element.tag, contents);
@@ -181,16 +181,16 @@ namespace gq
 					// we don't need to call SerializeContent at all.
 				}
 			}
-			else 
+			else
 			{
 				// The user returned nothing, so as promised, serialize normally.
 				contents = SerializeContent(node, false, mutationCollection);
-			}					
+			}
 		}
 		else
 		{
 			contents = SerializeContent(node, false, mutationCollection);
-		}		
+		}
 
 		if (needSpecialHandling) {
 			boost::trim(contents);
@@ -240,10 +240,10 @@ namespace gq
 			{
 				case GUMBO_NODE_TEXT:
 				{
-					if (!omitText) 
+					if (!omitText)
 					{
 						contents.append(std::string(child->v.text.original_text.data, child->v.text.original_text.length));
-					}					
+					}
 				}
 				break;
 
@@ -317,7 +317,7 @@ namespace gq
 		std::string atts(u8" ");
 		atts.append(at->original_name.data, at->original_name.length);
 
-		boost::string_ref attValue(at->original_value.data, at->original_value.length);		
+		boost::string_ref attValue(at->original_value.data, at->original_value.length);
 
 		if (!attValue.empty())
 		{

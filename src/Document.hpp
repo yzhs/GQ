@@ -46,7 +46,7 @@ namespace gq
 	class Document : public Node
 	{
 
-	public:		
+	public:
 
 		static std::unique_ptr<Document> Create(GumboOutput* gumboOutput = nullptr);
 
@@ -61,11 +61,11 @@ namespace gq
 		/// as Gumbo Parser requires this.
 		/// </summary>
 		/// <param name="source">
-		/// A UTF-8 encoded string of a valid HTML. 
+		/// A UTF-8 encoded string of a valid HTML.
 		/// </param>
-		void Parse(const std::string& source);		
+		void Parse(const std::string& source);
 
-	private:		
+	private:
 
 		/// <summary>
 		/// Constructs an empty Document object.

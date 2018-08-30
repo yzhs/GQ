@@ -53,8 +53,8 @@ namespace gq
 			#endif
 		#endif
 
-		// Add attribute key as a match trait for EXISTS, specifying any ("*") as the value. 
-		AddMatchTrait(m_attributeNameRef, SpecialTraits::GetAnyValue());		
+		// Add attribute key as a match trait for EXISTS, specifying any ("*") as the value.
+		AddMatchTrait(m_attributeNameRef, SpecialTraits::GetAnyValue());
 	}
 
 	AttributeSelector::AttributeSelector(SelectorOperator op, boost::string_ref key, boost::string_ref value) :
@@ -111,15 +111,15 @@ namespace gq
 
 	AttributeSelector::~AttributeSelector()
 	{
-		
+
 	}
 
 	const Selector::MatchResult AttributeSelector::Match(const Node* node) const
-	{		
+	{
 		switch (m_operator)
 		{
 			case SelectorOperator::Exists:
-			{						
+			{
 				if (node->HasAttribute(m_attributeNameRef))
 				{
 					return MatchResult(node);
@@ -187,13 +187,13 @@ namespace gq
 			case SelectorOperator::ValueHasPrefix:
 			{
 				auto attributeValue = node->GetAttributeValue(m_attributeNameRef);
-						
+
 				auto subSize = m_attributeValueRef.size();
 
 				if (attributeValue.size() == 0 || attributeValue.size() <= subSize)
-				{					
+				{
 					return nullptr;
-				}				
+				}
 
 				auto sub = attributeValue.substr(0, subSize);
 
@@ -295,7 +295,7 @@ namespace gq
 
 					if (oneSize >= 4)
 					{
-						if ((attributeValue[0] == m_attributeValueRef[0]) && 
+						if ((attributeValue[0] == m_attributeValueRef[0]) &&
 							(attributeValue[1] == m_attributeValueRef[1]) &&
 							(attributeValue[oneSize - 1] == m_attributeValueRef[oneSize - 1]) &&
 							(attributeValue[oneSize - 2] == m_attributeValueRef[oneSize - 2]))
@@ -324,12 +324,12 @@ namespace gq
 				if (anySpacePosition == boost::string_ref::npos)
 				{
 					return nullptr;
-				}				
-				
+				}
+
 				auto firstSpace = attributeValue.find(' ');
 
 				while (firstSpace != boost::string_ref::npos && attributeValue.size() > 0)
-				{					
+				{
 					if (firstSpace > 0 && firstSpace == m_attributeValueRef.size())
 					{
 						auto sub = attributeValue.substr(0, firstSpace);
@@ -358,7 +358,7 @@ namespace gq
 									return MatchResult(node);
 								}
 							}
-						}						
+						}
 					}
 
 					attributeValue = attributeValue.substr(firstSpace + 1);
@@ -461,7 +461,7 @@ namespace gq
 							return MatchResult(node);
 						}
 					}
-				}		
+				}
 
 				return nullptr;
 			}

@@ -63,18 +63,18 @@ namespace gq
 		/// the supplied rule string. This method should be wrapped in a try/catch.
 		/// </summary>
 		/// <param name="selectorString">
-		/// The raw selector string to parse and compile into a selector. 
+		/// The raw selector string to parse and compile into a selector.
 		/// </param>
 		/// <param name="retainOriginalString">
 		/// If true, the original string will be copied into the returned selector. This is not
 		/// necessary, and is only recommended for debugging selectors. Default is false.
 		/// </param>
 		/// <returns>
-		/// The compiled selector object. 
+		/// The compiled selector object.
 		/// </returns>
 		SharedSelector CreateSelector(std::string selectorString, const bool retainOriginalString = false) const;
 
-	private:		
+	private:
 
 		/// <summary>
 		/// Enumeration of the pseudo selectors supported by the parser.
@@ -126,10 +126,10 @@ namespace gq
 		/// stopped at an undefined state.
 		/// </summary>
 		/// <param name="selectorStr">
-		/// The string containing a single selector or multiple grouped selectors. 
+		/// The string containing a single selector or multiple grouped selectors.
 		/// </param>
 		/// <returns>
-		/// The compiled selector. 
+		/// The compiled selector.
 		/// </returns>
 		SharedSelector ParseSelectorGroup(boost::string_ref& selectorStr) const;
 
@@ -148,10 +148,10 @@ namespace gq
 		/// stopped at an undefined state.
 		/// </summary>
 		/// <param name="selectorStr">
-		/// The string containing a single selector or multiple combined selectors. 
+		/// The string containing a single selector or multiple combined selectors.
 		/// </param>
 		/// <returns>
-		/// The compiled selector. 
+		/// The compiled selector.
 		/// </returns>
 		SharedSelector ParseSelector(boost::string_ref& selectorStr) const;
 
@@ -169,10 +169,10 @@ namespace gq
 		/// stopped at an undefined state.
 		/// </summary>
 		/// <param name="selectorStr">
-		/// The string containing a single selector or multiple combined selectors. 
+		/// The string containing a single selector or multiple combined selectors.
 		/// </param>
 		/// <returns>
-		/// The compiled selector. 
+		/// The compiled selector.
 		/// </returns>
 		SharedSelector ParseSimpleSelectorSequence(boost::string_ref& selectorStr) const;
 
@@ -188,10 +188,10 @@ namespace gq
 		/// stopped at an undefined state.
 		/// </summary>
 		/// <param name="selectorStr">
-		/// The string containing a single selector or multiple combined selectors. 
+		/// The string containing a single selector or multiple combined selectors.
 		/// </param>
 		/// <returns>
-		/// The compiled selector. 
+		/// The compiled selector.
 		/// </returns>
 		SharedSelector ParsePseudoclassSelector(boost::string_ref& selectorStr) const;
 
@@ -207,10 +207,10 @@ namespace gq
 		/// stopped at an undefined state.
 		/// </summary>
 		/// <param name="selectorStr">
-		/// The string containing a single selector or multiple combined selectors. 
+		/// The string containing a single selector or multiple combined selectors.
 		/// </param>
 		/// <returns>
-		/// The compiled selector. 
+		/// The compiled selector.
 		/// </returns>
 		SharedSelector ParseAttributeSelector(boost::string_ref& selectorStr) const;
 
@@ -226,10 +226,10 @@ namespace gq
 		/// stopped at an undefined state.
 		/// </summary>
 		/// <param name="selectorStr">
-		/// The string containing a single selector or multiple combined selectors. 
+		/// The string containing a single selector or multiple combined selectors.
 		/// </param>
 		/// <returns>
-		/// The compiled selector. 
+		/// The compiled selector.
 		/// </returns>
 		SharedSelector ParseClassSelector(boost::string_ref& selectorStr) const;
 
@@ -245,10 +245,10 @@ namespace gq
 		/// stopped at an undefined state.
 		/// </summary>
 		/// <param name="selectorStr">
-		/// The string containing a single selector or multiple combined selectors. 
+		/// The string containing a single selector or multiple combined selectors.
 		/// </param>
 		/// <returns>
-		/// The compiled selector. 
+		/// The compiled selector.
 		/// </returns>
 		SharedSelector ParseIDSelector(boost::string_ref& selectorStr) const;
 
@@ -265,10 +265,10 @@ namespace gq
 		/// stopped at an undefined state.
 		/// </summary>
 		/// <param name="selectorStr">
-		/// The string containing a single selector or multiple combined selectors. 
+		/// The string containing a single selector or multiple combined selectors.
 		/// </param>
 		/// <returns>
-		/// The compiled selector. 
+		/// The compiled selector.
 		/// </returns>
 		SharedSelector ParseTypeSelector(boost::string_ref& selectorStr) const;
 
@@ -287,10 +287,10 @@ namespace gq
 		/// consumed before being supplied here.
 		/// </param>
 		/// <param name="lhs">
-		/// The left hand side reference to set on successful parsing. 
+		/// The left hand side reference to set on successful parsing.
 		/// </param>
 		/// <param name="rhs">
-		/// The right hand side reference to set on successful parsing. 
+		/// The right hand side reference to set on successful parsing.
 		/// </param>
 		void ParseNth(boost::string_ref& selectorStr, int& lhs, int& rhs) const;
 
@@ -309,7 +309,7 @@ namespace gq
 		/// digit character or whitespace immediately followed by a widget character.
 		/// </param>
 		/// <returns>
-		/// The extracted integer value. 
+		/// The extracted integer value.
 		/// </returns>
 		int ParseInteger(boost::string_ref& selectorStr) const;
 
@@ -414,7 +414,7 @@ namespace gq
 		/// of the supplied string, removing it and placing it in the returned object.
 		/// </param>
 		/// <returns>
-		/// The extracted name. 
+		/// The extracted name.
 		/// </returns>
 		boost::string_ref ParseName(boost::string_ref& selectorStr) const;
 
@@ -438,7 +438,7 @@ namespace gq
 		/// front end of the supplied string, removing it and placing it in the returned object.
 		/// </param>
 		/// <returns>
-		/// The extracted identifier. 
+		/// The extracted identifier.
 		/// </returns>
 		boost::string_ref ParseIdentifier(boost::string_ref& selectorStr) const;
 
@@ -447,10 +447,10 @@ namespace gq
 		/// std::isalpha with en_US-UTF8 locale.
 		/// </summary>
 		/// <param name="c">
-		/// The character to validate. 
+		/// The character to validate.
 		/// </param>
 		/// <returns>
-		/// True of the supplied character is valid for a named entity, false otherwise. 
+		/// True of the supplied character is valid for a named entity, false otherwise.
 		/// </returns>
 		bool IsNameChar(const char& c) const;
 
@@ -459,7 +459,7 @@ namespace gq
 		/// Internally uses std::isalpha with en_US-UTF8 locale.
 		/// </summary>
 		/// <param name="c">
-		/// The character to validate. 
+		/// The character to validate.
 		/// </param>
 		/// <returns>
 		/// True of the supplied character is a valid starting character for a named entity, false
@@ -468,13 +468,13 @@ namespace gq
 		bool IsNameStart(const char& c) const;
 
 		/// <summary>
-		/// Checks if the supplied character is a valid CSS selector combinator. 
+		/// Checks if the supplied character is a valid CSS selector combinator.
 		/// </summary>
 		/// <param name="c">
-		/// The character to validate. 
+		/// The character to validate.
 		/// </param>
 		/// <returns>
-		/// True if the supplied character is a valid CSS selector combinator, false otherwise. 
+		/// True if the supplied character is a valid CSS selector combinator, false otherwise.
 		/// </returns>
 		bool IsCombinator(const char& c) const;
 
@@ -486,21 +486,21 @@ namespace gq
 		/// divs.
 		/// </summary>
 		/// <param name="c">
-		/// The character to check. 
+		/// The character to check.
 		/// </param>
 		/// <returns>
-		/// True if the supplied character is "special", false otherwise. 
+		/// True if the supplied character is "special", false otherwise.
 		/// </returns>
 		bool IsSpecial(const char& c) const;
 
 		/// <summary>
-		/// Checks if the supplied character is a valid hexidecimal digit. 
+		/// Checks if the supplied character is a valid hexidecimal digit.
 		/// </summary>
 		/// <param name="c">
-		/// The character to validate. 
+		/// The character to validate.
 		/// </param>
 		/// <returns>
-		/// True if the supplied character is a valid hexidecimal digit, false otherwise. 
+		/// True if the supplied character is a valid hexidecimal digit, false otherwise.
 		/// </returns>
 		bool IsHexDigit(const char& c) const;
 
