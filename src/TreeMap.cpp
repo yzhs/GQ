@@ -84,13 +84,13 @@ namespace gq
 			{
 				// Add the node with "*" as the value key. This is useful for EXISTS lookups, prefix/suffix/list matching,
 				// etc. The node has the attribute being sought, that's all the user cares about.
-				auto newCont1 = std::vector< const Node* >{ { node } };
+				auto newCont1 = std::vector< const Node* >{ node };
 				auto newMap1 = ValueToNodesMap{};
 				newMap1.emplace(std::make_pair(SpecialTraits::GetAnyValue(), std::move(newCont1)));			
 				
 				if (nodeAttrMapIt->second.size() > 0)
 				{
-					auto newCont2 = std::vector< const Node* >{ { node } };
+					auto newCont2 = std::vector< const Node* >{ node };
 
 					// If the attribute is more than EXISTS, and defines a value, push it here as well.
 					newMap1.emplace(std::make_pair(nodeAttrMapIt->second, std::move(newCont2)));
@@ -136,7 +136,7 @@ namespace gq
 				else
 				{
 					// No need to search for duplicates, since no entries exist.
-					auto cont = std::vector< const Node* >{ { node } };
+					auto cont = std::vector< const Node* >{ node };
 					attr->second.emplace(std::make_pair(SpecialTraits::GetAnyValue(), std::move(cont)));
 				}
 
@@ -154,7 +154,7 @@ namespace gq
 				else
 				{
 					// No need to search for duplicates, since no entries exist.
-					auto cont = std::vector< const Node* >{ { node } };
+					auto cont = std::vector< const Node* >{ node };
 					attr->second.emplace(std::make_pair(nodeAttrMapIt->second, std::move(cont)));
 				}
 			}
